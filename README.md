@@ -1,32 +1,36 @@
-# hgf-ui
+# fcw-gf（functional components warehouse）
+
 
 > [组件详细文档地址](https://www.huangguangfa.cn)
 
 ``` js
 //安装
-yarn add hgfui
-npm install --save-dev hgfui
+yarn add fcw-gf
+npm install --save-dev fcw-gf
 
 //在min.js 引入使用
-import hgfui from 'hgfui'
+import fcwgf from 'fcw-gf'
 
-Vue.use(hgfui)
+Vue.use(fcwgf)
+
+```
+
+```
+开发一步  在packages下面添加组件包 命名规则 fcw-组件包名字 例如fcw-qrcode
+第二步 在组件包下新建 index.js文件 src下面新建main.vue  主要是组件开发 组件名字规则fcwXXX
+例如fcwQrcode index.js  主要是对外暴露组件
+第三步 在组件包packages下的fcw-ui.js 中引入组件
+第四步 在packages的 install 引入组件
+第五步 在docs下面写 以路由名字命名的md文件 例如qrcode.md  写法参考已经写好的组件md
+
 ```
 
 
 
 
-- 复制组件 
-
-``` javascript
-<copycom><copycom/>
-```
 
 
-参数|说明|类型|可选值|默认值
----|:--:|---:|:--:|:--:|
-<font color=#0077AA>value</font> | 复制的内容 | <font color=red>string</font> | <font color=#669900>暂无</font> | <font color=#669900>''</font>
-<font color=#0077AA>icon</font> | 图标icon | <font color=red>string</font> |  <font color=#669900>gf-fuzhi</font>  | <font color=#669900>gf-fuzhi</font> 
+
 
 
 

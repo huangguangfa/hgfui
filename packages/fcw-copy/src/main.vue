@@ -6,7 +6,7 @@
 
 <script>
 export default {
-    name:'copycom',
+    name:'fcw-copy',
     props:{
         value:{
             type:String,

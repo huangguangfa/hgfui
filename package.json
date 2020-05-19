@@ -1,5 +1,5 @@
 {
-  "name": "hgfui",
+  "name": "fcw-gf",
   "description": "UI组件库",
   "version": "1.0.4",
   "author": "",
@@ -19,6 +19,7 @@
   "dependencies": {
     "less": "^3.11.1",
     "less-loader": "^4.1.0",
+    "qrcode": "^1.4.4",
     "vue": "^2.5.11"
   },
   "browserslist": [
