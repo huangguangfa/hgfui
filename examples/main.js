@@ -1,21 +1,19 @@
 import Vue from 'vue'
 import App from './App.vue'
 
-//模拟单个组件引入
-import { 
-  fcwcopycom ,
-  fcwcircleview
+//模拟按需组件引入
+// import { 
+//   fcwmessage ,
+//   // fcwcircleview
 
-}  from '../packages/index';
-Vue.use(fcwcircleview);
+// }  from '../packages/index';
+// Vue.use(fcwmessage);
 
-// import gfcopycom from '../packages/copy/index';
-// console.log(gfcopycom)
-// Vue.use(gfcopycom);
+
 
 //模拟整体加载
-// import fcwUi from '../packages/index';
-// Vue.use(fcwUi);
+import fcwUi from '../packages/index';
+Vue.use(fcwUi);
 
 new Vue({
   el: '#app',

@@ -1,11 +1,15 @@
 
-- 圆形进度条(简易版)
+> 圆形进度条(简易版)
 
 ``` javascript
 //使用
-<fcw-circleview :percentage="10" :unit="个" :color="red"></fcw-circleview>
+<fcw-circleview 
+  :percentage="10" 
+  :unit="个" 
+  :color="red">
+</fcw-circleview>
 ```
-
+> <font color=#CD6600>1、参数描述</font>
 
 参数|说明|类型|可选值|默认值
 ---|:--:|---:|:--:|:--:|

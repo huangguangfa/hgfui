@@ -73,3 +73,49 @@
       animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
       -webkit-transform: scale3d(1, 1, 1);
       transform: scale3d(1, 1, 1); } }
+/* 旋转 */
+@keyframes rotate {
+  0%{
+      transform:rotate(0deg);
+      -ms-transform:rotate(0deg);     /* IE 9 */
+      -moz-transform:rotate(0deg);    /* Firefox */
+      -o-transform:rotate(0deg);
+  }
+  100% {
+      transform:rotate(360deg);
+      -ms-transform:rotate(360deg);   /* IE 9 */
+      -moz-transform:rotate(360deg);  /* Firefox */
+      -o-transform:rotate(360deg);
+  }
+}
+
+@-webkit-keyframes rotate {
+  0%{
+      -moz-transform:rotate(0deg);
+  }
+  100%{
+      -moz-transform:rotate(360deg);
+  }
+}
+/* 慢慢重上往下拉 */
+.fadeInDown {
+    -webkit-animation-name: fadeInDown;
+    animation-name: fadeInDown;
+    -webkit-animation-duration: 0.3s;
+    animation-duration: 0.3s; 
+}
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -10%, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+
+
+
+

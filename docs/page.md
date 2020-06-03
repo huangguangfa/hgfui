@@ -1,0 +1,21 @@
+
+> 按钮组件
+
+``` javascript
+<fcw-page  :current-page="currentPage" :page-size="pageSize" :total="100" @current-change="currentChange" ></fcw-page>
+```
+
+> <font color=#CD6600>1、参数描述</font>
+
+参数|说明|类型|可选值|默认值
+---|:--:|---:|:--:|:--:|
+<font color=#0077AA>current-page</font> | 当前页 | <font color=red>number</font> | <font color=#669900>暂无</font> | <font color=#669900> 暂无 </font>
+<font color=#0077AA>page-size</font> | 展示的size | <font color=red> number </font> |  <font color=#669900>暂无</font>  | <font color=#669900>暂无</font>
+<font color=#0077AA>total</font> | 总条目数 | <font color=red>number</font> | <font color=#669900>暂无</font> | <font color=#669900>暂无</font>
+
+
+> <font color=#CD6600>3、事件回调$emit</font>
+
+事件名称|说明 |
+-----|:--:|
+<font color=#42b983>current-change</font> | currentPage 改变时会触发 

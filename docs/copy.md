@@ -1,11 +1,15 @@
 
-- 复制组件 
+> 复制组件 
 
 ``` javascript
-    //使用
-    <fcw-copy><fcw-copy/>
+//使用
+<fcw-copy
+  value="我是复制的内容"
+  icon="gf-fuzhi"
+>
+<fcw-copy/>
 ```
-
+> <font color=#CD6600>1、参数描述</font>
 
 参数|说明|类型|可选值|默认值
 ---|:--:|---:|:--:|:--:|

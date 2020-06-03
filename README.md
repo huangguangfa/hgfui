@@ -1,7 +1,7 @@
 # fcw-gf（functional components warehouse）
 
 
-> [组件详细文档地址](https://www.huangguangfa.cn)
+> [组件详细文档地址](https://huangguangfa.cn/#/fcw-ui)
 
 ``` js
 //安装
@@ -14,6 +14,7 @@ import fcwgf from 'fcw-gf'
 Vue.use(fcwgf)
 
 ```
+
 
 ```
 开发一步  在packages下面添加组件包 命名规则 fcw-组件包名字 例如fcw-qrcode

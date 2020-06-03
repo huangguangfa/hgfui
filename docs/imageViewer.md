@@ -1,65 +1,47 @@
 
-- 图片查看器
+> 图片查看器
 
 ``` javascript
-    //使用
-    <fcw-imageViewer> <fcw-imageViewer/>
+//使用
+<fcw-imageViewer> <fcw-imageViewer/>
 ```
 ``` javascript
     //单图案例
-    <template>
-        <div id="app">
-            <fcw-imageViewer 
-                :ismultiple="false"
-                name="测试单图"
-                :imgUrl="imgUrl">
-            </>
-        </div>
-    </<template>
-
-    export default {
-        name: 'app',
-        data(){
-            return {
-                 imgUrl:'https://boya-subway.obs.cn-south-1.myhuaweicloud.com:443/202005160447560424.jpg'
-            }
-        }
-    }
+<fcw-imageViewer  :ismultiple="false" name="测试单图" :imgUrl="imgUrl">
+export default {
+   name: 'app',
+   data(){
+     return {
+        imgUrl:'https://boya-subway.obs.cn-south-1.myhuaweicloud.com:443/202005160447560424.jpg'
+     }
+  }
+}
 
 ```
 
 ``` javascript
     //多图案例
-    <template>
-        <div id="app">
-            <fcw-imageViewer 
-                :ismultiple="true"
-                :imgList="imgList"
-                :imgUrl="imgUrl">
-
-            </fcw-imageViewer> 
-        </div>
-    </<template>
-
-    export default {
-        name: 'app',
-        data(){
-            return {
-                imgList:[
-                    {
-                        name:'测试1号',
-                        url:'https://boya-subway.obs.cn-south-1.myhuaweicloud.com:443/202005160447560424.jpg'
-                    },
-                    {
-                        name:'测试2号',
-                        url:'https://boya-subway.obs.cn-south-1.myhuaweicloud.com:443/202005180437150879.jpg'
-                    }
-                ]
-            }
-        }
+ <fcw-imageViewer  :ismultiple="true" :imgList="imgList" :imgUrl="imgUrl">  </fcw-imageViewer> 
+ export default {
+   name: 'app',
+   data(){
+      return {
+          imgList:[
+            {
+               name:'测试1号',
+                url:'https://boya-subway.obs.cn-south-1.myhuaweicloud.com:443/202005160447560424.jpg'
+            },
+            {
+                name:'测试2号',
+                url:'https://boya-subway.obs.cn-south-1.myhuaweicloud.com:443/202005180437150879.jpg'
+           }
+        ]
     }
+ }
+}
 
 ```
+> <font color=#CD6600>1、参数描述</font>
 
 参数|说明|类型|可选值|默认值
 ---|:--:|---:|:--:|:--:|
