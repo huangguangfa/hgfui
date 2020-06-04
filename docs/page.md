@@ -12,7 +12,9 @@
 <font color=#0077AA>current-page</font> | 当前页 | <font color=red>number</font> | <font color=#669900>暂无</font> | <font color=#669900> 暂无 </font>
 <font color=#0077AA>page-size</font> | 展示的size | <font color=red> number </font> |  <font color=#669900>暂无</font>  | <font color=#669900>暂无</font>
 <font color=#0077AA>total</font> | 总条目数 | <font color=red>number</font> | <font color=#669900>暂无</font> | <font color=#669900>暂无</font>
-
+<font color=#0077AA>showTotal</font> | 显示总条数 | <font color=red> Boolean</font> | <font color=#669900>暂无</font> | <font color=#669900>false</font>
+<font color=#0077AA>sizes</font> | 显示分页筛选显示设置 | <font color=red> Boolean</font> | <font color=#669900>暂无</font> | <font color=#669900>false</font>
+<font color=#0077AA>pageSizes</font> | 每页显示个数选择器的选项设置 | <font color=red> Array </font> | <font color=#669900>暂无</font> | <font color=#669900>[10, 20, 30, 40, 50, 100]</font>
 
 > <font color=#CD6600>3、事件回调$emit</font>
 

@@ -60,9 +60,9 @@
             <!-- 消息弹窗 -->
             <!-- <button @click="mes">消息弹窗</button> -->
 
-            <!-- <fcw-select v-model="selectText" :selectData="selectList" clearable :options="options"></fcw-select>
+            <!-- <fcw-select v-model="selectText" :selectData="selectList" clearable :options="options"></fcw-select> -->
 
-            <button @click="aaa">查询</button> -->
+            <!-- <button @click="aaa">查询</button> -->
 
             <!-- <fcw-tag>标签二</fcw-tag>
             <fcw-tag type="success">标签一</fcw-tag>
@@ -82,7 +82,10 @@
                 :current-page="currentPage"
                 :page-size="pageSize"
                 :total="100"
+                show-total
                 @current-change="currentChange"
+                sizes
+                :page-sizes="[10,20,30,100]"
             >
             </fcw-page>
             <button @click="currentPage = 6">xaxa</button>
@@ -91,7 +94,7 @@
 </template>
 
 <script>
-import demo  from './demo'
+import demo from './demo'
 export default {
     components:{
         demo
@@ -222,6 +225,6 @@ export default {
 </script>
 <style lang="less" src="./style/base/reaet.less"></style> 
 <style lang="less">
-  .demo{ width: 500px; height: 100px; margin: 0 auto;margin-top: 20px;}
+  .demo{ width: 800px; height: 100px; margin: 0 auto;margin-top: 20px;}
 </style>
 

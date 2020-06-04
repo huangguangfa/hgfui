@@ -1,6 +1,6 @@
 <template>
     <div class="fcw-page">
-        <button  :disabled="current === 1"> <i class="iconfont gf-zuojiantou"></i></button>
+        <button  :disabled="current === 1" @click="changPager('')"> <i class="iconfont gf-zuojiantou"></i></button>
         <ul class="fcw-pager" @click="onPagerClick">
             <!-- 第一页 -->
             <li v-if="current >= 0" :class="{ 'active': current === 1 }"> 1 </li>
@@ -29,13 +29,22 @@
                 {{ pageCount }}
             </li>
         </ul>
-        <button><i class="iconfont gf-youjiantou"></i></button>
+        <button :disabled="current === pageCount" @click="changPager('add')"><i class="iconfont gf-youjiantou"></i></button>
+        <span class="fcw_pagination__total" v-if="showTotal">共 {{ total }} 条</span>
+        <!-- size分页 -->
+        <div class="fcw-select-page" v-if="sizes">
+            <fcw-select size="mini" v-model="size"  :selectData="selectData"></fcw-select>
+        </div>
     </div>
 </template>
 
 <script>
+import fcwSelect from '../../fcw-select/src/main';
 export default {
     name:'fcw-page',
+    components:{
+        fcwSelect
+    },
     props:{
         currentPage: {
             type: Number,
@@ -45,13 +54,13 @@ export default {
             type: Number,
             default: 10
         },
-        total: Number,
-        pageSizes: {
-            type: Array,
+        pageSizes:{
+            type:Array,
             default() {
                 return [10, 20, 30, 40, 50, 100];
             }
         },
+        total: Number,
         disabled:Boolean,
         pagerCount: {
             type: Number,
@@ -60,6 +69,8 @@ export default {
             },
             default: 7
         },
+        showTotal:Boolean,
+        sizes:Boolean,
     },
     data(){
         return{
@@ -67,25 +78,53 @@ export default {
             pageCount:0,
             quicknextIconClass: 'gf-gengduo',
             quickprevIconClass: 'gf-gengduo',
-            current:null,
+            current:1,
             showPrevMore:false,
             showNextMore:false,
+            selectList:[],
+            size:null,
+            selectData:[]
         }
     },
     mounted(){
         //当前分页
         if(this.currentPage){
             this.current = this.currentPage;
-        }   
-        this.setOption()
+            this.size = this.pageSize;
+            this.getPageSizes()
+        }
     },
     watch:{
         currentPage:function(val,oldVal){
             this.current = val;
-            this.setOption()
+            this.setPager();
+        },
+        pageSizes:function(val,oldVal){
+            this.size = val;
+        },
+        size:function(val,oldVal){
+            this.current = 1;
+            this.size = val;
+            this.setPager();
         }
     },
     methods:{
+        changPager(option){
+            if(option){
+                this.current += 1;
+            }else{
+                this.current -= 1;
+            }
+            this.setPager()
+        },
+        getPageSizes(){
+            this.selectData = this.pageSizes.map( item => {
+                return {
+                    label:`${ item }条/页`,
+                    value:item
+                }
+            })
+        },
         onMouseenter(direction) {
             if (this.disabled) return;
             if (direction === 'left') {
@@ -94,10 +133,10 @@ export default {
                 this.quicknextIconClass = 'gf-youyou-';
             }
         },
-        setOption(){
+        setPager(){
             //计算总分页
-            if(this.total && this.pageSize){
-                this.pageCount = Math.max(1, Math.ceil(this.total / this.pageSize));
+            if(this.total && this.size){
+                this.pageCount = Math.max(1, Math.ceil(this.total / this.size));
             }
             // 默认分页 7
             const pagerCount = this.pagerCount;
@@ -152,6 +191,9 @@ export default {
         onPagerClick(enevt){
             const target = event.target;
             let newPage = Number(event.target.textContent);
+            if(target.className === 'fcw-pager'){
+                return false
+            }
             const pageCount = this.pageCount;
             const currentPage = this.current;
             const pagerCountOffset = this.pagerCount - 2;
@@ -177,8 +219,11 @@ export default {
             //值相同不计算
             if (newPage !== currentPage) {
                 this.current = newPage;
+                if(newPage === 0){
+                    this.current = 1;
+                }
                 this.$emit('current-change', this.current);
-                this.setOption()
+                this.setPager()
             }
         }
     }
@@ -228,6 +273,14 @@ export default {
             cursor: not-allowed;
             opacity: 0.7;
         }
+    }
+    .fcw_pagination__total{
+        font-weight: 400;
+        color: #606266;
+        font-size: 12px;margin-left: 10px;
+    }
+    .fcw-select-page{
+        width: 120px; margin-left: 10px;
     }
 }
 

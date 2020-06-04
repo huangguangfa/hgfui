@@ -1,5 +1,12 @@
 <template>
-    <div class="fcw-select"  @click.stop="selectShow = !selectShow" v-clickoutside="handleClose">
+    <div class="fcw-select"  
+        :class="{
+            'fcw-select-medium':size === 'medium',
+            'fcw-select-small':size === 'small',
+            'fcw-select-mini':size === 'mini'
+        }"
+        @click.stop="selectShow = !selectShow" 
+        v-clickoutside="handleClose">
 
         <div class="fcw-select-input"  @mouseover="showclose(true)" @mouseout="showclose(false)">
             <input type="text" v-model="selectLabel" readonly placeholder="请选择">
@@ -8,7 +15,12 @@
         </div>
         
         <div class="select-content" v-show="selectShow"
-            :class=" selectShow === true?'fadeInDown':''">
+            :class="{
+               'fadeInDown':selectShow === true,
+                'fcw-content-medium':size === 'medium',
+                'fcw-content-small':size === 'small',
+                'fcw-content-mini':size === 'mini'
+            }">
             <ul>
                 <li  
                     v-for="item in selectData" :key="item[ options.label ]"
@@ -20,6 +32,7 @@
                 </li>
             </ul>
         </div>
+
     </div>
 </template>
 
@@ -44,10 +57,11 @@ export default {
                 }
             }
         },
+        size:String,
         clearable:Boolean
     },
     created(){
-        this.getSelectData()
+        this.getSelectData();
     },
     data(){
         return{
@@ -112,7 +126,7 @@ export default {
 
 <style scoped lang="less">
     .fcw-select{
-        width: 240px; height: 40px; padding: 0 10px; box-sizing: border-box;
+        width: 100%; height: 40px; padding: 0 10px; box-sizing: border-box;
         border: 1px solid #dcdfe6; border-radius: 5px; position: relative;
         .fcw-select-input{
             width: 100%; height: 100%; display: flex;align-items: center;
@@ -157,7 +171,7 @@ export default {
             background-color: #fff;
             box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);
             box-sizing: border-box;
-            min-width: 240px;
+            width: 100%;
             transform-origin: center top;
             z-index: 2024;
             >ul{
@@ -217,5 +231,12 @@ export default {
             z-index: 5;
             filter: drop-shadow(0 2px 12px rgba(0,0,0,.03));
         }
+        .fcw-content-mini{top: 35px;}
+        .fcw-content-small{top: 38px;}
+        .fcw-content-medium{top: 43px;}
     }
+    .fcw-select-mini{ height: 28px; }
+    .fcw-select-small{ height: 32px;}
+    .fcw-select-medium{ height: 36px;}
+    
 </style>
