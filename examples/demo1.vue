@@ -8,11 +8,19 @@
 </template>
 
 <script>
+import Emitter from '../utils/mixins/emitter.js'
 export default {
+    name:'demo1',
     props : [ 'count' , 'num'],
+    mixins:[ Emitter ],
     created(){
-        console.log('孙组件$listeners',this.$listeners)
-        console.log('孙组件$attrs',this.$attrs)
+        this.$on("childMessage", value =>{
+            console.log('接收父组件数据',value)
+        });
+        this.dispatch("demo", "parantMessage", "子组件给您发消息啦");
+
+        // console.log('孙组件$listeners',this.$listeners)
+        // console.log('孙组件$attrs',this.$attrs)
     }
 }
 </script>

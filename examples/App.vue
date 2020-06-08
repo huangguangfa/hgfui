@@ -78,7 +78,7 @@
 
             <demo :count="count" :num="num" @changData="changData" v-on:another = 'another'></demo> -->
 
-            <fcw-page 
+            <!-- <fcw-page 
                 :current-page="currentPage"
                 :page-size="pageSize"
                 :total="100"
@@ -88,7 +88,20 @@
                 :page-sizes="[10,20,30,100]"
             >
             </fcw-page>
-            <button @click="currentPage = 6">xaxa</button>
+            <button @click="currentPage = 6">xaxa</button> -->
+
+            <!-- <fcw-crop v-model="obj"></fcw-crop> -->
+
+            <!-- <fcw-radio-group v-model="radio">
+                <fcw-radio label="1">测试1</fcw-radio>
+                <fcw-radio label="2">测试2</fcw-radio>
+            </fcw-radio-group>
+            
+            <button @click="radio = '2'">切换</button> -->
+
+            <fcw-radio label="1" v-model="radio">测试1</fcw-radio>
+            <fcw-radio label="2" v-model="radio">测试1</fcw-radio>
+
         </div>
     </div>
 </template>
@@ -102,6 +115,8 @@ export default {
     name: 'app',
     data(){
         return {
+            obj:{},
+            radio:"1",
             currentPage:1,
             pageSize:10,
             count: 'count message',
@@ -166,6 +181,12 @@ export default {
         // },1500)
     },
     methods:{
+        radioChang(value){
+            console.log('改后的值',value)
+        },
+        findRadio(){
+            console.log(this.radio)
+        },
         currentChange(page){
             console.log(page)
         },

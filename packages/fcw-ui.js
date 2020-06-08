@@ -15,8 +15,10 @@ import fcwbutton from './fcw-button/src/main.vue';
 import fcwselect from './fcw-select/src/main.vue';
 import fcwinput from './fcw-input/src/main.vue';
 import fcwtag from './fcw-tag/src/main.vue';
-import fcwpage from './fcw-page/src/main.vue'
-
+import fcwpage from './fcw-page/src/main.vue';
+import fcwcrop from './fcw-crop/src/main.vue';
+import fcwgroup from './fcw-radio/src/main.vue';
+import fcwradio from './fcw-radio/src/radio.vue'
 // 导入指令
 import copy from '../directives/vcopy';
 import clickoutside from '../directives/clickoutside';  //点击组件外的全局指令
@@ -37,7 +39,10 @@ const components = {
     fcwselect, //下拉选择
     fcwinput, //输入框
     fcwtag, //标签
-    fcwpage
+    fcwpage, //分页
+    fcwcrop, //裁剪组件
+    fcwgroup, //单选框
+    fcwradio, //
 }
 
 //定义原型方法组件
