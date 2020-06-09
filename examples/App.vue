@@ -111,24 +111,57 @@
                 <fcw-checkbox label="3" disabled>多选C</fcw-checkbox>
             </fcw-checkbox-group> -->
 
-            <fcw-checkbox label="1" v-model="checkList" @change="radioChang">多选A</fcw-checkbox>
+            <!-- <fcw-checkbox label="1" v-model="checkList" @change="radioChang">多选A</fcw-checkbox>
             <fcw-checkbox label="2" v-model="checkList">多选B</fcw-checkbox>
-            <fcw-checkbox label="3" disabled>多选C</fcw-checkbox>
+            <fcw-checkbox label="3" disabled>多选C</fcw-checkbox> -->
             
             <!-- <button @click="radioChang">查看</button> -->
+
+            <!-- <fcw-table :columns="columns" :data="tableData"> </fcw-table> -->
+            
+            <demo-text></demo-text>
+            
         </div>
     </div>
 </template>
 
 <script>
-import demo from './demo'
+import demo from './demo';
+import demoText from './common/demo';
 export default {
     components:{
-        demo
+        demo,demoText
     },
     name: 'app',
     data(){
         return {
+            tableData:[
+                {
+                    name:'张三',
+                    age:'18',
+                    address:'深圳市南山区'
+                },
+                {
+                    name:'李四',
+                    age:'22',
+                    address:'深圳市龙岗区'
+                }
+            ],
+            columns:[
+                {
+                    title:'年龄',
+                    key:'age'
+                },
+                {
+                    title:'名称',
+                    key:'name',
+                    width:200
+                },
+                {
+                    title:'地址',
+                    key:'address'
+                }
+            ],
             checkList:['1'],
             obj:{},
             radio:true,

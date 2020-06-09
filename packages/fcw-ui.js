@@ -21,6 +21,7 @@ import fcwradiogroup from './fcw-radio/src/main.vue';
 import fcwradio from './fcw-radio/src/radio.vue';
 import fcwcheckboxgroup from './fcw-checkbox/src/main.vue';
 import fcwcheckbox from './fcw-checkbox/src/checkbox.vue';
+import fcwtable from './fcw-table/src/main.vue'
 
 // 导入指令
 import copy from '../directives/vcopy';
@@ -48,6 +49,7 @@ const components = {
     fcwradio, //单选
     fcwcheckboxgroup,
     fcwcheckbox, //多选
+    fcwtable, //表格
 }
 
 //定义原型方法组件
