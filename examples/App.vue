@@ -74,9 +74,9 @@
             <!-- <fcw-input v-model="copy" placeholder="请输入内容" show-password @input="inputChange" >
                 <i slot="prepend" class="iconfont gf-sousuo"></i>
             </fcw-input> -->
-            <!-- <button @click="input">查询</button>
+            <!-- <button @click="input">查询</button> -->
 
-            <demo :count="count" :num="num" @changData="changData" v-on:another = 'another'></demo> -->
+            <!-- <demo :count="count" :num="num" @changData="changData" v-on:another = 'another'></demo> -->
 
             <!-- <fcw-page 
                 :current-page="currentPage"
@@ -95,13 +95,27 @@
             <!-- <fcw-radio-group v-model="radio">
                 <fcw-radio label="1">测试1</fcw-radio>
                 <fcw-radio label="2">测试2</fcw-radio>
-            </fcw-radio-group>
+                 <fcw-radio label="3" v-model="radio" disabled>禁用单选</fcw-radio>
+            </fcw-radio-group> -->
             
-            <button @click="radio = '2'">切换</button> -->
+            <!-- <button @click="radio = '2'">切换</button>
 
-            <fcw-radio label="1" v-model="radio">测试1</fcw-radio>
-            <fcw-radio label="2" v-model="radio">测试1</fcw-radio>
+            <fcw-radio label="1" v-model="radio">单选1</fcw-radio>
+            <fcw-radio label="2" v-model="radio" disabled>禁用单选</fcw-radio>
+            <fcw-radio label="3" v-model="radio">单选2</fcw-radio> -->
 
+
+            <!-- <fcw-checkbox-group v-model="checkList" @change="radioChang">
+                <fcw-checkbox label="1" disabled>多选A</fcw-checkbox>
+                <fcw-checkbox label="2">多选B</fcw-checkbox>
+                <fcw-checkbox label="3" disabled>多选C</fcw-checkbox>
+            </fcw-checkbox-group> -->
+
+            <fcw-checkbox label="1" v-model="checkList" @change="radioChang">多选A</fcw-checkbox>
+            <fcw-checkbox label="2" v-model="checkList">多选B</fcw-checkbox>
+            <fcw-checkbox label="3" disabled>多选C</fcw-checkbox>
+            
+            <!-- <button @click="radioChang">查看</button> -->
         </div>
     </div>
 </template>
@@ -115,8 +129,9 @@ export default {
     name: 'app',
     data(){
         return {
+            checkList:['1'],
             obj:{},
-            radio:"1",
+            radio:true,
             currentPage:1,
             pageSize:10,
             count: 'count message',

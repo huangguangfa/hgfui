@@ -1,9 +1,15 @@
 <template>
    <div class="demo">
-       demo下
+       <!-- demo下
       {{count}}
       <button @click="$emit('another')">子组件按钮</button> 
-      <demo1 v-bind="$attrs"  v-on='$listeners'/>
+      <demo1 v-bind="$attrs"  v-on='$listeners'/> -->
+        <label class="weui-cell weui-check__label">
+            <input type="checkbox" true-value="1" false-value="1" v-model="model" > 测试A
+            <input type="checkbox" true-value="2" false-value="2" v-model="model"> 测试B 
+        </label>
+    
+
    </div>
 </template>
 <script>
@@ -17,6 +23,12 @@ export default {
     name: 'demo',
     props: ['count'],
     interitAttrs:true,
+    data(){
+        return{
+            trueLabel:['0'],
+            falseLabel:[]
+        }
+    },
     created () {
         this.$on('parantMessage', value => {
             console.log('接收子组件数据',value)
@@ -24,6 +36,16 @@ export default {
         });
         // console.log(this.$attrs)
         // console.log(this.$listeners)
+    },
+    computed:{
+        model:{
+            get(){
+                return ''
+            },
+            set(val){
+                console.log(val)
+            }
+        }
     },
     methods:{
         handleChange(){

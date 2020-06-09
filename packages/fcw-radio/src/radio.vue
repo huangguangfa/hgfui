@@ -3,9 +3,11 @@
         <label for="radio1" class="fcw-radio-l"
             :aria-checked="model === label"
             :class="[
-                { 'is-checked ': model === label }
+                { 'is-checked': model === label },
+                { 'is-disabled': disabled }
             ]">
             <input 
+                :disabled="disabled"
                 @focus="focus = true"
                 @blur="focus = false"
                 @change="handleChange" 
@@ -79,6 +81,7 @@
 </script>
 
 <style lang="less" scoped>
+    
     .fcw-radio-l{display: flex; align-items: center; cursor: pointer; position: relative;}
     .fcw-radio__inner{
         border: 1px solid #dcdfe6;
@@ -112,6 +115,22 @@
         }
         .fcw-radio__label{
             color:#409eff;
+        }
+    }
+    .is-disabled{
+        cursor: not-allowed;
+        >input{
+            cursor: not-allowed;
+        } 
+        .fcw-radio__inner{
+            border: 1px solid #dcdfe6;
+            background-color: #f5f7fa;
+            &::after{
+                background-color: #c0c4cc;
+            }
+        }
+        .fcw-radio__label{
+            color:#c0c4cc;
         }
     }
     .fcw-radio__label{
