@@ -4,11 +4,12 @@
       {{count}}
       <button @click="$emit('another')">子组件按钮</button> 
       <demo1 v-bind="$attrs"  v-on='$listeners'/> -->
-        <label class="weui-cell weui-check__label">
+        <!-- <label class="weui-cell weui-check__label">
             <input type="checkbox" true-value="1" false-value="1" v-model="model" > 测试A
             <input type="checkbox" true-value="2" false-value="2" v-model="model"> 测试B 
-        </label>
-    
+        </label> -->
+
+        <input type="checkbox" value="111" v-model="model"> 
 
    </div>
 </template>

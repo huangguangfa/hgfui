@@ -1,15 +1,18 @@
 <template>
+<!-- { 'is-checked': isChecked }, -->
     <div class="fcw-checkbox">
-        <label for="checkbox1" class="fcw-checkbox-l"
+
+        <label for="checkboxl" class="fcw-checkbox-l"
             :class="[
                 { 'is-checked': isChecked },
                 { 'is-disabled': disabled }
             ]">
             <input
+                v-if="trueLabel || falseLabel"
                 :disabled="disabled"
                 @focus="focus = true"
                 @blur="focus = false"
-                @change="handleChange" 
+                @change="handleChange"
                 :true-value="trueLabel"
                 :false-value="falseLabel"
                 v-model="model"
@@ -19,9 +22,28 @@
                 :name="name"
                 type="checkbox"
             />
-            <span  class="fcw-checkbox__inner" :class="[ { 'is-checked-inner': isChecked && disabled } ]" @keydown.stop></span>
+            <input
+                v-else
+                :disabled="disabled"
+                @focus="focus = true"
+                @blur="focus = false"
+                @change="handleChange"
+                v-model="model"
+                :value="label"
+                tabindex="-1" 
+                class="fcw__orig-checkbox"
+                :name="name"
+                type="checkbox"
+            />
+            <!-- 模拟勾选的div -->
+            <span  class="fcw-checkbox__inner " 
+                :class="[ 
+                    { 'is-checked-inner': isChecked === true && disabled === true },
+                    { 'is-checked-indeterminate': indeterminate === true && isChecked === false }
+                ]" @keydown.stop>
+            </span>
             <span class="fcw-checkbox__label">
-                <slot></slot> 
+                <slot></slot>
                 <template v-if="!$slots.default">{{ label }}</template>
             </span>
         </label>
@@ -40,6 +62,7 @@
             name: String,
             trueLabel: [String, Number],
             falseLabel: [String, Number],
+            indeterminate: Boolean,
         },
         data(){
             return{
@@ -54,7 +77,8 @@
                 set(val) {
                     if (this.isGroup) {
                         this.dispatch('fcw-checkbox-group', 'handleChange', [ val ]);
-                    } else {
+                    } 
+                    else {
                         this.$emit('input', val);
                     }
                 }
@@ -140,7 +164,22 @@
             color:#409eff;
         }
     }
-
+    .is-checked-indeterminate{
+        border-color: #409eff;
+        background: #409eff;
+    }
+    .is-checked-indeterminate::after{
+        content: "";
+        position: absolute;
+        display: block;
+        background-color: #fff;
+        height: 2px;
+        transform: scale(.5);
+        left: 0;
+        right: 0;
+        top: 4px;
+        width: 10px;
+    }
     .is-disabled{
         cursor: not-allowed;
         >input{

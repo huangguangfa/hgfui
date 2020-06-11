@@ -76,7 +76,7 @@
             </fcw-input> -->
             <!-- <button @click="input">查询</button> -->
 
-            <!-- <demo :count="count" :num="num" @changData="changData" v-on:another = 'another'></demo> -->
+            <demo :count="count" :num="num" @changData="changData" v-on:another = 'another'></demo>
 
             <!-- <fcw-page 
                 :current-page="currentPage"
@@ -95,7 +95,7 @@
             <!-- <fcw-radio-group v-model="radio">
                 <fcw-radio label="1">测试1</fcw-radio>
                 <fcw-radio label="2">测试2</fcw-radio>
-                 <fcw-radio label="3" v-model="radio" disabled>禁用单选</fcw-radio>
+                <fcw-radio label="3" v-model="radio" disabled>禁用单选</fcw-radio>
             </fcw-radio-group> -->
             
             <!-- <button @click="radio = '2'">切换</button>
@@ -104,23 +104,29 @@
             <fcw-radio label="2" v-model="radio" disabled>禁用单选</fcw-radio>
             <fcw-radio label="3" v-model="radio">单选2</fcw-radio> -->
 
+            <fcw-checkbox label="10" v-model="checkAll" :indeterminate="indeterminate"  @change="cheboxChangAll">全选</fcw-checkbox>
+            <!-- <fcw-checkbox label="1" v-model="checkAll">全选</fcw-checkbox> -->
+            -----------------
+            <fcw-checkbox-group v-model="checkList" @change="radioChang">
+                <fcw-checkbox label="1">多选A</fcw-checkbox>
+                <fcw-checkbox label="2" disabled>多选B</fcw-checkbox>
+                <fcw-checkbox label="3">多选C</fcw-checkbox>
+            </fcw-checkbox-group>
 
-            <!-- <fcw-checkbox-group v-model="checkList" @change="radioChang">
-                <fcw-checkbox label="1" disabled>多选A</fcw-checkbox>
-                <fcw-checkbox label="2">多选B</fcw-checkbox>
-                <fcw-checkbox label="3" disabled>多选C</fcw-checkbox>
-            </fcw-checkbox-group> -->
-
-            <!-- <fcw-checkbox label="1" v-model="checkList" @change="radioChang">多选A</fcw-checkbox>
-            <fcw-checkbox label="2" v-model="checkList">多选B</fcw-checkbox>
+            
+            <!-- <fcw-checkbox label="2" v-model="checkList">多选B</fcw-checkbox>
             <fcw-checkbox label="3" disabled>多选C</fcw-checkbox> -->
             
             <!-- <button @click="radioChang">查看</button> -->
 
             <!-- <fcw-table :columns="columns" :data="tableData"> </fcw-table> -->
+
+
             
-            <demo-text></demo-text>
-            
+            <!-- <demo-text :age="19"></demo-text> -->
+            <!-- <fcw-tree></fcw-tree>  -->
+
+
         </div>
     </div>
 </template>
@@ -135,6 +141,8 @@ export default {
     name: 'app',
     data(){
         return {
+            indeterminate:true,
+            checkAll:false,
             tableData:[
                 {
                     name:'张三',
@@ -162,7 +170,7 @@ export default {
                     key:'address'
                 }
             ],
-            checkList:['1'],
+            checkList:['1','2'],
             obj:{},
             radio:true,
             currentPage:1,
@@ -229,6 +237,9 @@ export default {
         // },1500)
     },
     methods:{
+        cheboxChangAll(val){
+            console.log(val)
+        },
         radioChang(value){
             console.log('改后的值',value)
         },

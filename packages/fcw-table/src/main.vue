@@ -4,7 +4,7 @@
         <div class="fcw-table__header-wrapper">
             <table>
                 <colgroup>
-                    <col v-for="(cols,index) in columns" :key="index" :width="cols.width"   />
+                    <col v-for="(cols,index) in columns" :key="index" :width="cols.width"/>
                 </colgroup>
                 <thead>
                     <tr>
@@ -15,7 +15,6 @@
                 </thead>
             </table>
         </div>
-        
         
         <div class="fcw-table__body">
             <table>
@@ -46,7 +45,7 @@
             return{
                 
             }
-        }
+        },
     }
 </script>
 

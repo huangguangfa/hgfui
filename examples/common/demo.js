@@ -8,6 +8,9 @@ export default{
         return{
             text:'测试文本'
         }
+    }, 
+    mounted(){
+        console.log(this.age)
     },
     render(h) {
         return h('div', '测试数据');
