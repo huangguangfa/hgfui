@@ -16,5 +16,5 @@
 <font color=#0077AA>percentage</font> | 进度值 | <font color=red>Number</font> | <font color=#669900>暂无</font> | <font color=#669900>0</font>
 <font color=#0077AA>color</font> | 16进制颜色或者正常颜色单词 | <font color=red> String</font> |  <font color=#669900>暂无</font>  | <font color=#669900>#64d3f6</font>
 <font color=#0077AA>unit</font> | 显示单位 | <font color=red>String</font> | <font color=#669900>暂无</font> | <font color=#669900>%</font>
-
+<font color=#0077AA>textColor</font> | 显示字体颜色 | <font color=red>String</font> | <font color=#669900>暂无</font> | <font color=#669900>#343435</font>
 

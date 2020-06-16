@@ -1,5 +1,11 @@
 <template>
    <div class="demo">
+       <svg width="440" height="440" viewbox="0 0 440 440">
+            <circle cx="220" cy="220" r="170" stroke-width="50" stroke="#FF0520" fill="none"></circle>
+            <circle cx="220" cy="220" stroke-dasharray="500" r="170" stroke-width="50" stroke="#D1D3D7" fill="none"></circle>
+        </svg>
+
+        
        <!-- demo下
       {{count}}
       <button @click="$emit('another')">子组件按钮</button> 
@@ -9,7 +15,7 @@
             <input type="checkbox" true-value="2" false-value="2" v-model="model"> 测试B 
         </label> -->
 
-        <input type="checkbox" value="111" v-model="model"> 
+        <!-- <input type="checkbox" value="111" v-model="model">  -->
 
    </div>
 </template>
@@ -58,5 +64,9 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.demo{border: 1px solid red;}
+circle {
+    -webkit-transition: stroke-dasharray .25s;
+    transition: stroke-dasharray .25s;
+}
+// .demo{border: 1px solid red;}
 </style>

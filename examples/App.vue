@@ -27,21 +27,22 @@
             ></fcw-qrcode> -->
 
             <!-- 圆形进度条 -->
-            <!-- <fcw-circleview percentage="10" unit="个" color="red"></fcw-circleview> -->
+            <!-- <fcw-circleview percentage="10" unit="个" color="yellow"></fcw-circleview> -->
 
             <!-- 上传插件 -->
-            <!-- <fcw-upload 
+            <fcw-upload 
                 ref="upload"
-                url="http://121.37.7.216:5000/oss/oss/storageObject"
+                url="http://192.168.1.117:5000/oss/oss/storageObject"
                 name="object"
                 :headers="{
-                    Authorization:'e43241231'
+                    Authorization:'1272714003127820290'
                 }"
-                :autoUpload="false"
+                :limit="10"
+                :isDrag="true"
                 @success="filesuccess"
-                @previewfile="previewfile"
-            ></fcw-upload>
-            <button @click="upAll"> 上传</button> -->
+                @previewfile="previewfile">
+            </fcw-upload>
+            <button @click="upAll"> 上传</button>
 
             <!-- <fcw-calendar @change="change" v-model="day" currentDate="2020-04-01"></fcw-calendar>
             <button @click="all">点击查看</button> -->
@@ -76,7 +77,7 @@
             </fcw-input> -->
             <!-- <button @click="input">查询</button> -->
 
-            <demo :count="count" :num="num" @changData="changData" v-on:another = 'another'></demo>
+            <!-- <demo :count="count" :num="num" @changData="changData" v-on:another = 'another'></demo> -->
 
             <!-- <fcw-page 
                 :current-page="currentPage"
@@ -104,18 +105,20 @@
             <fcw-radio label="2" v-model="radio" disabled>禁用单选</fcw-radio>
             <fcw-radio label="3" v-model="radio">单选2</fcw-radio> -->
 
-            <fcw-checkbox label="10" v-model="checkAll" :indeterminate="indeterminate"  @change="cheboxChangAll">全选</fcw-checkbox>
-            <!-- <fcw-checkbox label="1" v-model="checkAll">全选</fcw-checkbox> -->
+            <!-- <fcw-checkbox label="10" v-model="checkAll" :indeterminate="indeterminate"  @change="checkboxChangAll">全选</fcw-checkbox>
             -----------------
-            <fcw-checkbox-group v-model="checkList" @change="radioChang">
+            <fcw-checkbox-group v-model="checkList" @change="checkboxChang">
                 <fcw-checkbox label="1">多选A</fcw-checkbox>
-                <fcw-checkbox label="2" disabled>多选B</fcw-checkbox>
+                <fcw-checkbox label="2">多选B</fcw-checkbox>
                 <fcw-checkbox label="3">多选C</fcw-checkbox>
-            </fcw-checkbox-group>
+            </fcw-checkbox-group> -->
 
-            
-            <!-- <fcw-checkbox label="2" v-model="checkList">多选B</fcw-checkbox>
-            <fcw-checkbox label="3" disabled>多选C</fcw-checkbox> -->
+            <!-- <fcw-checkbox label="3" >多选C</fcw-checkbox> -->
+            <!-- <fcw-checkbox label="1" :value="cheListData[1].show">多选B</fcw-checkbox>
+            <fcw-checkbox label="4" :value="cheListData[2].show">多选B</fcw-checkbox> -->
+            <!-- <fcw-checkbox v-for="i in cheListData" :key="i.id" label="2" v-model="i.show">{{ i.name }}</fcw-checkbox>
+            <button @click="findCheckStatus">查询</button> -->
+            <!-- <fcw-checkbox label="3" disabled>多选C</fcw-checkbox> -->
             
             <!-- <button @click="radioChang">查看</button> -->
 
@@ -124,8 +127,8 @@
 
             
             <!-- <demo-text :age="19"></demo-text> -->
-            <!-- <fcw-tree></fcw-tree>  -->
-
+            
+            <!-- <fcw-tree @node-click="nodeClick" showCheckbox :data="treeList"></fcw-tree>  -->
 
         </div>
     </div>
@@ -141,7 +144,63 @@ export default {
     name: 'app',
     data(){
         return {
-            indeterminate:true,
+
+            cheListData:[
+                {
+                    id:1,
+                    name:'测试1',
+                    show:false,
+                    check:false,
+                    indeterminate:false,
+                },
+                {
+                    id:2,
+                    name:'测试2',
+                    show:false,
+                    check:false,
+                    indeterminate:false,
+                },
+                {
+                    id:3,
+                    name:'测试3',
+                    show:false,
+                    check:false,
+                    indeterminate:false,
+                },
+            ],
+            treeList:[
+                {
+                    name:'树形组件1',
+                    id:1,
+                    show:false,
+                    check:false,
+                    indeterminate:false,
+                    children:[
+                        {
+                            name:'子树形组件1-1',
+                            id:2,
+                            show:false,
+                            check:false,
+                            indeterminate:false,
+                        }
+                    ]
+                },
+                {
+                    name:'树形组件2',
+                    id:3,
+                    show:false,
+                    check:false,
+                    children:[
+                        {
+                            name:'子树形组件2-2',
+                            id:4,
+                            show:false,
+                            check:false
+                        }
+                    ]
+                },
+            ],
+            indeterminate:false,
             checkAll:false,
             tableData:[
                 {
@@ -170,7 +229,7 @@ export default {
                     key:'address'
                 }
             ],
-            checkList:['1','2'],
+            checkList:[],
             obj:{},
             radio:true,
             currentPage:1,
@@ -178,20 +237,24 @@ export default {
             count: 'count message',
             num: 'num message',
             options:{
-                label:'label',
-                value:'value'
+                label:'name',
+                value:'id'
             },
             selectText:'',
             selectList:[
-                    {
-                        value:'2',
-                        label:'bbb'
-                    },
-                    {
-                        value:'1',
-                        label:'aaa'
-                    }
-                ],
+                {
+                    id:'2',
+                    name:'西瓜'
+                },
+                {
+                    id:'1',
+                    name:'菠萝'
+                },
+                {
+                    id:'3',
+                    name:'香蕉'
+                }
+            ],
             copy:'',
             imgList:[
                 {
@@ -237,11 +300,32 @@ export default {
         // },1500)
     },
     methods:{
-        cheboxChangAll(val){
-            console.log(val)
+        findCheckStatus(){
+            console.log(this.cheListData)
+        },  
+        nodeClick(val){
+            console.log('节点别点击',val)
         },
-        radioChang(value){
-            console.log('改后的值',value)
+        checkboxChangAll(val){
+            if(val){
+                this.checkList = ['1','2','3']
+            }else{
+                this.checkList = []
+                this.indeterminate = false;
+            }
+        },
+        checkboxChang(value){
+            if(value.length){
+               this.indeterminate = true;
+               if(value.length === 3){
+                   this.checkAll = true;
+               }else{
+                   this.checkAll = false;
+               }
+            }else{
+                this.checkAll = false;
+                this.indeterminate = false;
+            }
         },
         findRadio(){
             console.log(this.radio)
@@ -259,7 +343,7 @@ export default {
             this.$message({
                 type:'success',
                 message:'操作成功！',
-                showClose:true,
+                showClose:false,
                 onClose:(ev) =>{
                     console.log(ev)
                 }

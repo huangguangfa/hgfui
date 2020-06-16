@@ -1,8 +1,7 @@
 <template>
-<!-- { 'is-checked': isChecked }, -->
     <div class="fcw-checkbox">
-
-        <label for="checkboxl" class="fcw-checkbox-l"
+        <label for="checkboxl" 
+            class="fcw-checkbox-label"
             :class="[
                 { 'is-checked': isChecked },
                 { 'is-disabled': disabled }
@@ -15,8 +14,8 @@
                 @change="handleChange"
                 :true-value="trueLabel"
                 :false-value="falseLabel"
-                v-model="model"
                 :value="label"
+                v-model="model"
                 tabindex="-1" 
                 class="fcw__orig-checkbox"
                 :name="name"
@@ -36,7 +35,7 @@
                 type="checkbox"
             />
             <!-- 模拟勾选的div -->
-            <span  class="fcw-checkbox__inner " 
+            <span class="fcw-checkbox__inner " 
                 :class="[ 
                     { 'is-checked-inner': isChecked === true && disabled === true },
                     { 'is-checked-indeterminate': indeterminate === true && isChecked === false }
@@ -44,7 +43,7 @@
             </span>
             <span class="fcw-checkbox__label">
                 <slot></slot>
-                <template v-if="!$slots.default">{{ label }}</template>
+                <template v-if="!$slots.default && label">{{ label }}</template>
             </span>
         </label>
     </div>
@@ -114,18 +113,20 @@
                     value = this.falseLabel === undefined ? false : this.falseLabel;
                 }
                 this.$emit('change', value, ev);
-                this.$nextTick( () => {
-                    if (this.isGroup) {
-                        this.dispatch('fcw-checkbox-group', 'handleChange', [ this._checkboxGroup.value ]);
-                    }
-                });
+                // this.$nextTick( () => {
+                //     if (this.isGroup) {
+                //         this.dispatch('fcw-checkbox-group', 'handleChange', [ this._checkboxGroup.value ]);
+                //     }
+                // });
             }
         }
     }
 </script>
 
 <style lang="less" scoped>
-    .fcw-checkbox-l{display: flex; align-items: center; cursor: pointer; position: relative;}
+    .fcw-checkbox-label{
+        display: flex; align-items: center; cursor: pointer; position: relative; display: inline-block;
+    }
     .fcw-checkbox__inner{
         border: 1px solid #dcdfe6;
         width: 14px;
@@ -135,10 +136,10 @@
         cursor: pointer;
         display: inline-block;
         box-sizing: border-box;
-        margin-right: 10px;
+        margin-right: 5px;
         border: 1px solid #dcdfe6;
     }
-    .fcw__orig-checkbox{ position: absolute; opacity: 0;top: 0; left: 0; right: 0; bottom: 0; margin: 0; width: 100%; z-index: 2;}
+    .fcw__orig-checkbox{ position: absolute; opacity: 0;top: 0; left: 0; right: 0; bottom: 0; width: 100%; margin: 0;z-index: 2; height: 100%;}
     .fcw-checkbox__inner::after{
         box-sizing: content-box;
         content: "";
@@ -149,7 +150,6 @@
         left: 4px;
         position: absolute;
         top: 1px;
-        transform: rotate(45deg) scaleY(0);
         width: 3px;
         transition: transform .15s ease-in .05s;
         transform-origin: center;
@@ -174,7 +174,7 @@
         display: block;
         background-color: #fff;
         height: 2px;
-        transform: scale(.5);
+        transform: rotate(0deg) scale(.5);
         left: 0;
         right: 0;
         top: 4px;
@@ -207,6 +207,7 @@
     }
     .fcw-checkbox__label{
         font-size: 14px;
+        color: #606266;
     }
-    .fcw-checkbox{margin-top: 10px;}
+    .fcw-checkbox{display: flex; align-items: center;}
 </style>

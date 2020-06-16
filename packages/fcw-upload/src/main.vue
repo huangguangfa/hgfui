@@ -1,7 +1,12 @@
 <template>
-    <div class="upload" @dragover="enterAims" @dragleave="awayAims" :class="isDropAims === true?'Drop':''">
+    <div class="upload"  :class="isDropAims === true?'Drop':''" ref="circle">
         <input type="file" :accept="fileType"  class="upload-file" @change="handleFileChange" ref="inputer">
-        <div class="remind">
+        <div class="remind"
+            ref="input_substitute"
+            @drop.prevent="onDrop"
+            @dragover.prevent="isDropAims = true;"
+            @dragleave.prevent="isDropAims = false"
+            @click="handleInputClick">
             <slot>
                 <div class="remind_c">
                     <i class="iconfont gf-iconset0340"></i>
@@ -9,9 +14,9 @@
                 </div>
             </slot>
         </div>
-        <div class="circle" v-show="logding">
-            <div class="circle_c">
-                <fcw-circleview :percentage="percentage"></fcw-circleview>
+        <div class="circle"  v-show="logding">
+            <div class="circle_c" >
+                <fcw-circleview :width="circleWidth" :percentage="percentage" ></fcw-circleview>
             </div>
         </div>
     </div>
@@ -31,7 +36,7 @@ export default {
         //上传路径
         url:{
             type:String,
-            default:'http://121.37.7.216:5000/oss/oss/storageObject'
+            default:'http://192.168.1.117:5000/oss/oss/storageObject'
         },
         //是否自动上传
         autoUpload:{
@@ -76,6 +81,10 @@ export default {
         quality:{
             type:Number,
             default:0.8
+        },
+        //最大允许上传个数	
+        limit:{
+            type:Number
         }
     },
     components:{
@@ -89,22 +98,28 @@ export default {
             //loading
             logding:false,
             //上传进度
-            percentage:10,
-           
+            percentage:0,
+            circleWidth:100
         }   
     },
     mounted(){
         this.$_inputDOM = this.$refs.inputer;
-        this.isDrag === true && this.addDropSupport();
+        let offsetWidth = this.$refs.circle.offsetWidth;
+        let offsetHeight = this.$refs.circle.offsetHeight;
+        this.circleWidth = (offsetWidth > offsetHeight ? offsetHeight:offsetWidth) - 20;
     },
     methods: {
+        //替身input事件
+        handleInputClick(){
+            this.$refs.inputer.click() 
+        },
         onError(er){
             this.$emit('error',er)
         },
         async handleFileChange(){
             let file = this.isCssions &&  await this.compressions(this.$_inputDOM.files[0]) || this.$_inputDOM.files[0];
             let size = Math.floor(file.size / 1024);
-            // if (file.type.indexOf('image') === -1) {return this.$message.error('请选择图片文件')};
+            // if (file.type.indexOf(this.fileType) === -1) {return this.$message.error(`请选择${this.fileType}后缀文件`)};
             // 1TB等于1024GB；1GB等于1024MB；1MB等于1024KB；1KB等于1024Byte(字节);
             if (size > this.size) {return this.onError(`文件大小不能超过${this.size}k`);}
             this.$emit('previewfile',file);
@@ -126,6 +141,7 @@ export default {
         },
         //多图上传
         moreUpload(flieList){
+            this.logding = true;
             let isArr = flieList instanceof Array;
             if(isArr === true && flieList.length != 0){
                 //组装上传参数array
@@ -137,9 +153,11 @@ export default {
                    return upload(this.url,item);
                 })
                 //发送多张上传
-                Promise.all(fileUploadFnList).then( (result) => {
+                Promise.all(fileUploadFnList).then( result => {
+                    this.logding = false;
                     this.onsuccess(result);
                 }).catch((error) => {
+                    this.logding = false;
                     this.onError(err)
                 })
             }else{
@@ -175,18 +193,41 @@ export default {
             let total = Number(progress.total);
             this.percentage = Math.round((loaded/total) * 100);
         },
-        Drop(e){
+        //拖拽放下事件
+        onDrop(e){
+            this.isDropAims = false;
+            if(this.isDrag === false){
+                return false
+            }
             //清除默认事件
             e.preventDefault();
-            let fileList = e.dataTransfer.files; // 文件对象列表
+            let fileList = [].slice.call(e.dataTransfer.files); // 文件对象列表
             // 必须要有一个文件
             if (fileList.length === 0) {return this.$emit('Error','上传必须有一个文件')};
-            //格式限制
-            if (fileList[0].type.indexOf('image') === -1) {return this.$message.error('请选择图片文件')};
-            // 限制下只能拖一个文件
-            if (fileList.length > 1) {return this.$message.error('暂时不支持多文件')};
-            this.$emit('preview',fileList[0]);
-            this.autoUpload === this.upload(fileList[0]);
+            
+            //格式校验
+            if(this.checkFileType(fileList)){
+                return this.$message({
+                    type:'error',
+                    message:this.checkFileType(fileList),
+                })
+            }
+            this.$emit('preview',fileList);
+            this.autoUpload === this.moreUpload(fileList);
+        },
+        //校验限制
+        checkFileType(file){
+            let typeErr = false;
+            //类型
+            file.forEach( file =>{
+                let Filetype = file.type;
+                if(this.fileType.indexOf(Filetype) === -1){
+                    this.typeErr = true;
+                }
+            })
+            if(this.typeErr) return `文件格式必须以${this.fileType}格式`;
+            //个数
+            if(this.limit && this.limit < file.length) return `文件不能超过${this.limit}个`;
         },
         //压缩操作
         compressions(file){
@@ -222,7 +263,7 @@ export default {
                         // quality值越小，所绘制出的图像越模糊
                         const base64 = canvas.toDataURL('image/jpeg', quality); // 图片格式jpeg或webp可以选0-1质量区间
                         // 返回base64转blob的值
-                        console.log(`原图${(src.length/1024).toFixed(2)}kb`, `新图${(base64.length/1024).toFixed(2)}kb`);
+                        // console.log(`原图${(src.length/1024).toFixed(2)}kb`, `新图${(base64.length/1024).toFixed(2)}kb`);
                         // 去掉url的头，并转换为byte
                         const bytes = window.atob(base64.split(',')[1]);
                         // 处理异常,将ascii码小于0的转换为大于0
@@ -245,23 +286,13 @@ export default {
                 this.$emit('Error',e);
             }
         },
-        //监听拖拽事件
-        addDropSupport(){
-            this.$_inputDOM.addEventListener('drop',this.Drop);
-        },
-        //解除拖拽事件
-        cancelDropSupport(){
-            this.$_inputDOM && this.$_inputDOM.removeEventListener('drop',this.Drop);
-        },
-        enterAims(){
-            this.isDropAims = true;
-        },
-        awayAims(){
-            this.isDropAims = false;
-        },
-    },
-    destroyed(){
-        this.isDrag === true && this.cancelDropSupport();
+        getCircleWidth(){
+            if(this.$refs.circle.offsetHeight > this.$refs.circle.offsetWidth){
+                return this.$refs.circle.offsetWidth
+            }else{
+                return this.$refs.circle.offsetHeight
+            }
+        }
     }
 }
 </script>
@@ -270,18 +301,18 @@ export default {
         width: 100%; height: 100%;border: 1px dashed rgba(107,169,220,0.5);cursor: pointer;overflow: hidden; position: relative;box-sizing: border-box; 
         background: rgba(247,255,251,1);
         &:hover{border-color: #6BA9DC;}
-        .upload-file{width: 100%; height: 100%; opacity: 0;cursor: pointer; position: relative;z-index: 6; font-size:0;}
+        .upload-file{width: 100%; height: 100%; opacity: 0;cursor: pointer; position: relative;display: none; font-size:0;}
         .circle{width: 100%; height: 100%; position: absolute; left: 0; top: 0; display: flex; z-index: 10;
          align-items: center; justify-content: center; background: #fff;
-            .circle_c{width: 80%; height: 80%;}
+            .circle_c{width: 80%; height: 80%;display: flex; justify-content: center; align-items: center;}
          }
         .remind{
             width: 100%; height: 100%; position: absolute; left: 0; top: 0; display: flex; align-items: center; justify-content: center;
         }
     }
-    .Drop{border: 3px dashed #6BA9DC; background:rgba(107,169,220,0.1);}
     .remind_c{
         .gf-iconset0340{color: #6BA9DC; font-size: 30px;width: 100%;display: flex; justify-content: center; margin-bottom: 10px;}
         span{color:rgba(107,169,221,1); text-align: center; display: block; font-size: 12px;}
     }
+    .Drop{border: 3px dashed #6BA9DC; background:rgba(107,169,220,0.1);}
 </style>

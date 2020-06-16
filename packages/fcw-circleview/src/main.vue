@@ -1,5 +1,5 @@
 <template>
-    <div class="circleview">
+    <div class="circleview" :style="`width:${width}px; height:${width}px`">
         <div class="progress">
             <div v-for="item in 4" :key="item" class="block" :class="`block${item}`" :style="`background-color:${color};`">
                 <div
@@ -12,7 +12,7 @@
         </div>
         <div class="circle-content">
             <div class="content-c-bg1">
-                <div class="content-c-bg2">{{percentage}}{{unit}}</div>
+                <div class="content-c-bg2" :style="`color:${textColor}`">{{percentage}}{{unit}}</div>
             </div>
         </div>
     </div>
@@ -35,6 +35,14 @@ export default {
         unit:{
             type:String,
             default:'%'
+        },
+        textColor:{
+            type:String,
+            default:'#343435'
+        },
+        width:{
+            type:Number,
+            default:100
         }
     },
     methods: {
@@ -69,8 +77,6 @@ export default {
     position: relative;
     left: 0;
     top: 0;
-    width: 100%;
-    height: 100%;
     border-radius: 100%;
     overflow: hidden;
   .progress,

@@ -4,7 +4,7 @@
 //使用
 <fcw-upload 
   ref="upload"
-  url="http://121.37.7.216:5000/oss/oss/storageObject"
+  url="http://192.168.0.8:5000/oss/oss/storageObject"
   name="file"
   :headers="{  Authorization:'e43241231'  }"
   @success="filesuccess"
@@ -27,6 +27,7 @@
 <font color=#0077AA> name </font> | <font  size=1> 上传文件字段名(key) </font> | <font color=red> String </font> | <font color=#669900> file </font> | <font color=#FFB90F> file  </font> 
 <font color=#0077AA> data </font> | <font  size=1> 上传的额外参数 </font> | <font color=red> Object </font> | <font color=#669900>  暂无</font> | <font color=#FFB90F> {} </font> 
 <font color=#0077AA> headers </font> | <font size=1> 设置上传的请求头部 </font> | <font color=red> Object </font> | <font color=#669900> 暂无 </font> | <font color=#FFB90F> {} </font> 
+<font color=#0077AA> limit </font> | <font size=1> 最大允许上传个数</font> | <font color=red> Number </font> | <font color=#669900> 暂无 </font> | <font color=#FFB90F> 无限 </font> 
 
 > <font color=#CD6600>1、事件回调$emit</font>
 
