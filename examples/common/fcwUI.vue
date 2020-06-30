@@ -189,9 +189,6 @@ h1, h2, h3, h4 {
       text-decoration: none;
       color: #ff6600;
   }
-  a:visited {
-      /*color: purple;*/
-  }
   li {
       line-height: 24px;
   }

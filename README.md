@@ -1,7 +1,7 @@
 # fcw-gf（functional components warehouse）
 
 
-> [组件详细文档地址](https://huangguangfa.cn/#/fcw-ui)
+> [组件详细文档地址](http://fcwui.huangguangfa.cn)
 
 ``` js
 //安装
