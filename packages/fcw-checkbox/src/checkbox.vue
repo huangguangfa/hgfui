@@ -138,6 +138,8 @@
         box-sizing: border-box;
         margin-right: 5px;
         border: 1px solid #dcdfe6;
+        // z-index: 2;
+        &:hover{border-color: #409eff;}
     }
     .fcw__orig-checkbox{ position: absolute; opacity: 0;top: 0; left: 0; right: 0; bottom: 0; width: 100%; margin: 0;z-index: 2; height: 100%;}
     .fcw-checkbox__inner::after{
@@ -192,6 +194,7 @@
                 background-color: #f2f6fc;
                 border-color: #f2f6fc;
             }
+            &:hover{border-color: #dcdfe6;}
         }
         .fcw-checkbox__label{
             color:#c0c4cc;

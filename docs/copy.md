@@ -1,14 +1,36 @@
+### 基础用法
 
-> 复制组件 
+<div class="demo-block">
+  <fcw-copy v-model="copyValue" icon="gf-fuzhi"><fcw-copy/>
+  <script>
+    export default {
+      data() {
+        return {
+          copyValue: '张三'
+        }
+      }
+    }
+    </script>
+</div>
 
-``` javascript
-//使用
-<fcw-copy
-  value="我是复制的内容"
-  icon="gf-fuzhi"
->
-<fcw-copy/>
+::: demo
+
+```html
+
+<fcw-copy v-model="copyValue" icon="gf-fuzhi"><fcw-copy/>
+  <script>
+    export default {
+      data() {
+        return {
+          copyValue: '张三'
+        }
+      }
+    }
+  </script>
+
 ```
+:::
+
 > <font color=#CD6600>1、参数描述</font>
 
 参数|说明|类型|可选值|默认值

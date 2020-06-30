@@ -5,7 +5,7 @@
             <circle cx="220" cy="220" stroke-dasharray="500" r="170" stroke-width="50" stroke="#D1D3D7" fill="none"></circle>
         </svg>
 
-        
+        <button @click="$emit('test','提交数据')">提交查看</button>
        <!-- demo下
       {{count}}
       <button @click="$emit('another')">子组件按钮</button> 

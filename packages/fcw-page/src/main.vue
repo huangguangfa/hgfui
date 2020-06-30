@@ -115,6 +115,7 @@ export default {
             }else{
                 this.current -= 1;
             }
+            this.$emit('current-change', this.current);
             this.setPager()
         },
         getPageSizes(){

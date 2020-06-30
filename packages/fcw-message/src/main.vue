@@ -1,13 +1,8 @@
 <template>
     <transition name="fcw-message-fade" @after-leave="handleAfterLeave">
-        <div v-show="visible" class="fcw-message"
-            :class="[
-                `message-gf-${type}`
-            ]">
-            <i class="iconfont"
-                :class="[
-                    `gf-${type}`
-                ]"></i>
+        <div v-if="visible" class="fcw-message"
+            :class="[ `message-gf-${type}` ]">
+            <i class="iconfont" :class="[ `gf-${type}` ]"></i>
             <span class="fcw-message-content" :class="showClose === true?'pad30':''">{{ message }}</span>
             <span class="fcw-message-close iconfont gf-cuo" v-show="showClose" @click="close"></span>
         </div>
@@ -28,7 +23,7 @@ export default {
     methods:{
         handleAfterLeave(){
             this.$destroy(true);
-            this.$el.parentNode.removeChild(this.$el);
+            this.$el.parentNode.removeChild( this.$el );
         },
         keydown(e) {
             if (e.keyCode === 27) { // esc关闭消息

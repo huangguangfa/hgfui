@@ -1,17 +1,58 @@
-> 对话框提醒
+### 基础用法
 
-``` javascript
- //使用
- this.$confirm({
-     icon:'gf-loading',
-     content:'测试消息'
-  }).then( confirm =>{
-     console.log(confirm)
-  }).catch( cancel =>{
-     console.log(cancel)
-  })
+<div class="demo-block">
+  <fcw-button type="primary" size="small" @click="message">删除李大锤</fcw-button>
+  <script>
+    export default {
+      methods:{
+         message(){
+            this.$confirm({
+               icon:'gf-shanchu',
+               content:'你确定要删除 李大锤 吗？'
+            }).then( confirm =>{
+               this.$message({
+                    type:'success',
+                    message:'删除成功',
+                    showClose:false,
+               })
+            }).catch( cancel =>{
+               this.$message({
+                    type:'success',
+                    message:'取消删除',
+                    showClose:false,
+               })
+            })
+         }
+      }
+    }
+    </script>
+</div>
+
+::: demo
+
+```html
+
+<fcw-button type="primary" size="small" @click="message">删除李大锤</fcw-button>
+  <script>
+    export default {
+      methods:{
+         message(){
+            this.$confirm({
+               icon:'gf-shanchu',
+               content:'你确定要删除 李大锤 吗？'
+            }).then( confirm =>{
+               console.log('点击了确定')
+            }).catch( cancel =>{
+               console.log('点击了取消')
+            })
+         }
+      }
+    }
+    </script>
 
 ```
+:::
+
 
 > <font color=#CD6600>1、参数描述</font>
 

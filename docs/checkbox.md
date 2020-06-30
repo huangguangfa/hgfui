@@ -1,34 +1,148 @@
 
-> 多选组件
-``` javascript
-// 基础使用方式
-<fcw-checkbox label="1" v-model="checkList" @change="radioChang">多选A</fcw-checkbox>
+### 基础用法
+
+<div class="demo-block">
+  <fcw-checkbox label="1" v-model="checkList">多选A</fcw-checkbox>
+  <fcw-checkbox label="2" v-model="checkList">多选B</fcw-checkbox>
+  <fcw-checkbox label="3" v-model="checkList" disabled>多选C</fcw-checkbox>
+  <script>
+    export default {
+      data() {
+        return {
+          checkList:['3'],
+          indeterminate:true,
+          checkAll:false
+        }
+      },
+      methods:{
+        checkboxChangAll(val){
+            if(val){
+                this.checkList = ['1','2','3']
+            }else{
+                this.checkList = []
+                this.indeterminate = false;
+            }
+        },
+      }
+    }
+    </script>
+</div>
+
+::: demo
+
+```html
+
+<fcw-checkbox label="1" v-model="checkList">多选A</fcw-checkbox>
 <fcw-checkbox label="2" v-model="checkList">多选B</fcw-checkbox>
-<fcw-checkbox label="3" disabled>多选C</fcw-checkbox>
+<fcw-checkbox label="3" v-model="checkList" disabled>多选C</fcw-checkbox>
+<script>
+  export default {
+    data() {
+      return {
+        checkList:['3']
+      }
+    }
+  }
+  </script>
 
 ```
+:::
 
-``` javascript
-//多选框组 结合fcw-checkbox-group元素和子元素fcw-checkbox可以实现单选组
-<fcw-checkbox-group v-model="checkList" @change="radioChang">
-  <fcw-checkbox label="1" disabled>多选A</fcw-checkbox>
+### 多选框组 结合fcw-checkbox-group元素和子元素fcw-checkbox可以实现单选组
+
+<div class="demo-block">
+  <fcw-checkbox-group v-model="checkList" @change="radioChang">
+    <fcw-checkbox label="1" >多选A</fcw-checkbox>
+    <fcw-checkbox label="2">多选B</fcw-checkbox>
+    <fcw-checkbox label="3" disabled>多选C</fcw-checkbox>
+  </fcw-checkbox-group>
+  <script>
+    export default {
+      data() {
+        return {
+          checkList:['3']
+        }
+      }
+    }
+    </script>
+</div>
+
+::: demo
+
+```html
+
+<fcw-checkbox-group v-model="checkList" >
+  <fcw-checkbox label="1" >多选A</fcw-checkbox>
   <fcw-checkbox label="2">多选B</fcw-checkbox>
   <fcw-checkbox label="3" disabled>多选C</fcw-checkbox>
 </fcw-checkbox-group>
+<script>
+export default {
+  data() {
+    return {
+      checkList:['3']
+    }
+  }
+}
+</script>
 
 ```
+:::
 
-``` javascript
-//indeterminate 属性用以表示 checkbox 的不确定状态，一般用于实现全选的效果
-<fcw-checkbox label="10" v-model="checkAll" :indeterminate="indeterminate"  @change="checkboxChangAll">全选</fcw-checkbox>
-  -----------------
-<fcw-checkbox-group v-model="checkList" @change="checkboxChang">
-      <fcw-checkbox label="1">多选A</fcw-checkbox>
-      <fcw-checkbox label="2">多选B</fcw-checkbox>
-      <fcw-checkbox label="3">多选C</fcw-checkbox>
+### indeterminate 属性用以表示 checkbox 的不确定状态，一般用于实现全选的效果
+
+<div class="demo-block">
+  <fcw-checkbox label="10" v-model="checkAll" :indeterminate="indeterminate"  @change="checkboxChangAll">全选</fcw-checkbox>
+  <fcw-checkbox-group v-model="checkList" @change="checkboxChang">
+    <fcw-checkbox label="1">多选A</fcw-checkbox>
+    <fcw-checkbox label="2">多选B</fcw-checkbox>
+    <fcw-checkbox label="3">多选C</fcw-checkbox>
+  </fcw-checkbox-group>
+  <script>
+    export default {
+      data() {
+        return {
+          checkList:['3'],
+          indeterminate:true,
+          checkAll:false
+        }
+      }
+    }
+    </script>
+</div>
+
+::: demo
+
+```html
+
+<fcw-checkbox-group v-model="checkList" >
+  <fcw-checkbox label="1" >多选A</fcw-checkbox>
+  <fcw-checkbox label="2">多选B</fcw-checkbox>
+  <fcw-checkbox label="3" disabled>多选C</fcw-checkbox>
 </fcw-checkbox-group>
+<script>
+export default {
+  data() {
+    return {
+      checkList:['3']
+    }
+  },
+  methods:{
+    checkboxChangAll(val){
+        if(val){
+            this.checkList = ['1','2','3']
+        }else{
+            this.checkList = []
+            this.indeterminate = false;
+        }
+    },
+  }
+}
+</script>
 
 ```
+:::
+
 
 > <font color=#CD6600>1、参数描述</font>
 

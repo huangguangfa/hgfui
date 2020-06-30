@@ -23,7 +23,7 @@ const vCopy = {
                 }, 500);
             }
             if (!el.$value) {
-                addelement('无内容','#f56c6c')
+                addelement('复制成功','#f56c6c')
                 return;
             }
             //创建copy元素

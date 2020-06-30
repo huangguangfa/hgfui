@@ -1,20 +1,85 @@
+### 基础用法
 
-> 单选组件
-``` javascript
-// 基础使用方式
+<div class="demo-block">
+    <fcw-radio label="1" v-model="radio">测试1</fcw-radio>
+    <fcw-radio label="2" v-model="radio">测试2</fcw-radio>
+    <script>
+        export default {
+            data() {
+                return {
+                    radio:'1'
+                }
+            },
+            methods:{
+                radioChang(val){
+                    this.$message({
+                        type:'success',
+                        message:'操作成功！',
+                        showClose:true,
+                        onClose:(ev) =>{
+                            console.log(ev)
+                        }
+                    })
+                }
+            }
+        }
+    </script>
+</div>
+
+::: demo
+
+```html
+
 <fcw-radio label="1" v-model="radio">测试1</fcw-radio>
 <fcw-radio label="2" v-model="radio">测试2</fcw-radio>
+<script>
+    export default {
+        data() {
+            return {
+                radio:'1'
+            }
+        },
+        
+    }
+</script>
 
 ```
+:::
 
-``` javascript
-//单选框组 结合fcw-radio-group元素和子元素fcw-radio可以实现单选组
+### 单选框组 结合fcw-radio-group元素和子元素fcw-radio可以实现单选组
+<div class="demo-block">
+    <fcw-radio-group v-model="radio"  @change="radioChang">
+        <fcw-radio label="1">测试1</fcw-radio>
+        <fcw-radio label="2">测试2</fcw-radio>
+    </fcw-radio-group>
+</div>
+
+::: demo
+
+```html
+
 <fcw-radio-group v-model="radio"  @change="radioChang">
     <fcw-radio label="1">测试1</fcw-radio>
     <fcw-radio label="2">测试2</fcw-radio>
 </fcw-radio-group>
+<script>
+    export default {
+        data() {
+            return {
+                radio:'1'
+            }
+        },
+        methods:{
+            radioChang(val){
+                
+            }
+        }
+    }
+</script>
 
 ```
+:::
+
 
 > <font color=#CD6600>1、参数描述</font>
 

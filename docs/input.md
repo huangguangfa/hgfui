@@ -1,51 +1,143 @@
-> 输入框
+### 基础用法
 
-``` javascript
-//基础用法 --- 输入框
-<fcw-input v-model="value" placeholder="请输入内容"  @input="inputChange" ></fcw-input>
+<div class="demo-block">
+    <fcw-input class="w250" v-model="input" placeholder="请输入内容" ></fcw-input>
+    <script>
+    export default {
+      data() {
+        return {
+          input: ''
+        }
+      }
+    }
+    </script>
+</div>
 
-//基础用法 --- 文本输入框
-<fcw-input v-model="value" type="textarea" placeholder="请输入内容" ></fcw-input>
+::: demo
+
+```html
+
+<fcw-input v-model="input" placeholder="请输入内容"></fcw-input>
+  <script>
+  export default {
+    data() {
+      return {
+        input: ''
+      }
+    }
+  }
+  </script>
 
 ```
+:::
 
-``` javascript
-//在输入框“前”添加插槽
-<fcw-input v-model="value" placeholder="请输入内容">
-    <i slot="prepend" class="iconfont gf-sousuo"></i>
+### 文本域
+
+<div class="demo-block">
+    <fcw-input  type="textarea" v-model="input" placeholder="请输入内容" ></fcw-input>
+    <script>
+    export default {
+      data() {
+        return {
+          input: ""
+        }
+      }
+    }
+    </script>
+</div>
+
+::: demo
+
+```html
+
+<fcw-input type="textarea" v-model="input" placeholder="请输入内容"></fcw-input>
+  <script>
+  export default {
+    data() {
+      return {
+        input:""
+      }
+    }
+  }
+  </script>
+
+```
+:::
+
+###  icon 输入框
+
+<div class="demo-block">
+    <fcw-input class="w250"  placeholder="请输入内容">
+      <i slot="prepend" class="iconfont gf-sousuo"></i>
+    </fcw-input>
+    <fcw-input class="w250 ml10"  placeholder="请输入内容">
+      <i slot="append" class="iconfont gf-sousuo"></i>
+    </fcw-input>
+</div>
+
+
+
+::: demo
+
+```html
+
+<fcw-input  placeholder="请输入内容">
+  <i slot="prepend" class="iconfont gf-sousuo"></i>
+</fcw-input>
+<fcw-input placeholder="请输入内容">
+  <i slot="append" class="iconfont gf-sousuo"></i>
 </fcw-input>
 
 ```
+:::
 
-``` javascript
-//在输入框“后”添加插槽
-<fcw-input v-model="value" placeholder="请输入内容">
-    <i slot="append" class="iconfont gf-sousuo"></i>
-</fcw-input>
+
+###  可清空
+使用```@clear``` 事件来监听清空操作。
+
+<div class="demo-block">
+    <fcw-input class="w250"  v-model="input" clearable placeholder="请输入内容" ></fcw-input>
+</div>
+
+
+
+::: demo
+
+```html
+
+<fcw-input v-model="input" clearable placeholder="请输入内容" ></fcw-input>
 
 ```
+:::
 
-``` javascript
-//在输入框带清除按钮
-<fcw-input v-model="value" clearable placeholder="请输入内容" @clear='clear'></fcw-input>
+
+###  密码类型输入框
+
+<div class="demo-block">
+    <fcw-input v-model="input" class="w250" show-password placeholder="请输入内容"></fcw-input>
+</div>
+
+
+
+::: demo
+
+```html
+
+<fcw-input v-model="input"  show-password placeholder="请输入内容"></fcw-input>
 
 ```
+:::
 
-``` javascript
-//密码类型输入框
-<fcw-input v-model="value" show-password placeholder="请输入内容"></fcw-input>
-
-```
 
 > <font color=#CD6600>1、参数描述</font>
 
-参数|说明|类型|可选值|默认值
+参数|说明|类型|可选值|默认值<font color=#669900>
 ---|:--:|---:|:--:|:--:|
-<font color=#0077AA>type</font> | 输入框类型 | <font color=red>string</font> | <font color=#669900>text，textarea </font> | <font color=#669900> 暂无 </font>
+<font color=#0077AA>type</font> | 输入框类型 | <font color=red>string</font> | ``` text ``` ``` textarea ``` | <font color=#669900> 暂无 </font>
 <font color=#0077AA>value</font> | 绑定值 | <font color=red>string / number</font> | <font color=#669900>暂无 </font> | <font color=#669900> 暂无 </font>
-<font color=#0077AA>disabled</font> | 禁用 | <font color=red>boolean</font> | <font color=#669900>true / false </font> | <font color=#669900> false </font>
-<font color=#0077AA>clearable</font> | 带清除操作 | <font color=red>boolean</font> | <font color=#669900>true / false </font> | <font color=#669900> false </font>
-<font color=#0077AA>showPassword</font> | 密码输入框 | <font color=red>boolean</font> | <font color=#669900>true / false </font> | <font color=#669900> false </font>
+<font color=#0077AA>disabled</font> | 禁用 | <font color=red>boolean</font> | ```true``` ``` false ``` | <font color=#669900> false </font>
+<font color=#0077AA>clearable</font> | 带清除操作 | <font color=red>boolean</font> | <font color=#669900>```true``` ``` false ``` </font> | <font color=#669900> false </font>
+<font color=#0077AA>showPassword</font> | 密码输入框 | <font color=red>boolean</font> | <font color=#669900>```true``` ``` false ``` </font> | <font color=#669900> false </font>
 
 > <font color=#CD6600>3、事件回调$emit</font>
 

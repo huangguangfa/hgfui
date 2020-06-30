@@ -1,0 +1,91 @@
+{
+  "介绍":[
+    {
+      "desc": "fcw简介",
+      "name": "fcw-ui",
+      "path": "/fcw-ui"
+    },
+    {
+      "desc": "安装使用",
+      "name": "install",
+      "path": "/install"
+    }
+  ],
+  "组件": [
+    {
+      "desc": "Button组件",
+      "name": "button",
+      "path": "/button"
+    },
+    {
+      "desc": "简单日历组件",
+      "name": "calendar",
+      "path": "/calendar"
+    },
+    {
+      "desc": "Input输入框",
+      "name": "input",
+      "path": "/input"
+    },
+    {
+      "desc": "Copy组件",
+      "name": "copy",
+      "path": "/copy"
+    },
+    {
+      "desc": "Select选择",
+      "name": "select",
+      "path": "/select"
+    },
+    {
+      "desc": "MessageBox对话框",
+      "name": "messageBox",
+      "path": "/messageBox"
+    },
+    {
+      "desc": "imageViewer图片查看器",
+      "name": "imageViewer",
+      "path": "/imageViewer"
+    },
+    {
+      "desc": "qrcode二维码",
+      "name": "qrcode",
+      "path": "/qrcode"
+    },
+    {
+      "desc": "upload上传插件",
+      "name": "upload",
+      "path": "/upload"
+    },
+    {
+      "desc": "circleview圆形进度（简易版）",
+      "name": "circleview",
+      "path": "/circleview"
+    },
+    {
+      "desc": "message消息提醒",
+      "name": "message",
+      "path": "/message"
+    },
+    {
+      "desc": "tag标签",
+      "name": "tag",
+      "path": "/tag"
+    },
+    {
+      "desc": "Pagination分页",
+      "name": "Pagination",
+      "path": "/Pagination"
+    },
+    {
+      "desc": "radio单选框",
+      "name": "radio",
+      "path": "/radio"
+    },
+    {
+      "desc": "checkbox多选框",
+      "name": "checkbox",
+      "path": "/checkbox"
+    }
+  ]
+}

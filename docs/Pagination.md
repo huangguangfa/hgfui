@@ -1,9 +1,53 @@
+### 基础用法
 
-> 按钮组件
+<div class="demo-block">
+  <fcw-page  :current-page="currentPage" :page-size="pageSize" :total="100" @current-change="currentChange" ></fcw-page>
+  <script>
+    export default {
+      data() {
+        return {
+          currentPage: 1,
+          pageSize:10,
+        }
+      },
+      methods:{
+          currentChange(val){
+            this.$message({
+                type:'success',
+                message:'当前页面 '+ val,
+            })
+          }
+        } 
+    }
+    </script>
+</div>
 
-``` javascript
+::: demo
+
+```html
+
 <fcw-page  :current-page="currentPage" :page-size="pageSize" :total="100" @current-change="currentChange" ></fcw-page>
+<script>
+    export default {
+      data() {
+        return {
+          currentPage: 1,
+          pageSize:10,
+        }
+      },
+      methods:{
+          currentChange(val){
+            this.$message({
+                type:'success',
+                message:'当前页面 '+ val,
+            })
+          }
+        } 
+    }
+</script>
+
 ```
+:::
 
 > <font color=#CD6600>1、参数描述</font>
 

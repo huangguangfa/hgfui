@@ -30,7 +30,7 @@
             <!-- 操作元素 -->
             <span class="fcw_input__suffix"  v-if="getSuffixVisible()">
                 <i class="iconfont gf-cuo1"  @click="clear" v-if="clearable && value.length"></i>
-                <i class="iconfont gf-yanjing"  @click="handlePasswordVisible" v-if="showPassword && value.length"></i>
+                <i class="iconfont gf-yanjing"  @click="handlePasswordVisible" v-if="showPassword && value && value.length"></i>
             </span>
 
             <!-- 后置元素 -->
@@ -40,7 +40,8 @@
         </template>
         <textarea
             v-else
-            class="fcw-input-inner"
+            rows="10" cols="60"
+            class="fcw-input-inner fcw-input-textarea"
             @compositionstart="handleCompositionStart"
             @compositionupdate="handleCompositionUpdate"
             @compositionend="handleCompositionEnd"
@@ -69,10 +70,6 @@ export default {
         disabled:Boolean,
         clearable:Boolean,
         showPassword:Boolean
-    },
-    
-    created(){
-        console.log(this.$slots)
     },
     data(){
         return{
@@ -161,6 +158,9 @@ export default {
         }
         .fcw-input-prepend{padding-left: 30px;}
         .fcw-input-append{padding-right: 30px;}
+        .fcw-input-textarea{
+            min-height: 70px;
+        }   
     }
 
     .fcw_input__suffix{
@@ -178,4 +178,5 @@ export default {
     .fcw-input-inner:-moz-placeholder{font-size: 12px; color:#ccc;}                  /* Firefox版本4-18 */
     .fcw-input-inner::-moz-placeholder{font-size: 12px; color:#ccc;}                  /* Firefox版本19+ */
     .fcw-input-inner:-ms-input-placeholder{font-size: 12px; color:#ccc;}           /* IE浏览器 */
+    
 </style>

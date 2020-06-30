@@ -1,25 +1,73 @@
-> 二维码生成器
+### 基础用法
 
-``` javascript
-//使用
+<div class="demo-block">
+  <fcw-qrcode 
+    :size="150" 
+    islogo
+    :logo="logo"
+    :content="content" >
+  </fcw-qrcode>
+  
+  <script>
+    export default {
+      data() {
+        return {
+          logo:{
+            src:require('../examples/assets/icon.png'),
+            borderColor:'#fff',
+            bgColor:'#fff',
+            borderRadius:30,
+            logoSize:30
+          },
+          content:'给大哥递支烟'
+        }
+      }
+    }
+  </script>
+</div>
+
+::: demo
+
+```html
+
 <fcw-qrcode 
-  :size="300" 
-  :islogo="true"
-  :logo="{  src:require('./assets/logo.png'),  borderColor:'#fff', bgColor:'red',  logoSize:50 }"
-   :content="{ name:'31231231',  age:19  }" >
-</fcw-qrcode>
+    :size="150" 
+    islogo
+    :logo="logo"
+    :content="content" >
+  </fcw-qrcode>
+  
+  <script>
+    export default {
+      data() {
+        return {
+          logo:{
+            src:require('../examples/assets/icon.png'),
+            borderColor:'#fff',
+            bgColor:'#fff',
+            borderRadius:30,
+            logoSize:30
+          },
+          content:'给大哥递支烟'
+        }
+      }
+    }
+  </script>
+
 ```
+:::
+
 
 > <font color=#CD6600>1、参数描述</font>
 
 参数|说明|类型|可选值|默认值
 ---|:--:|---:|:--:|:--:|
 <font color=#0077AA>size</font> | 二维码的大小 | <font color=red>Number</font> | <font color=#669900>暂无</font> | <font color=#669900>100</font>
-<font color=#0077AA>islogo</font> | 是否要logo | <font color=red>Boolean</font> |  <font color=#669900>true / false</font>  | <font color=#669900>false</font>
-<font color=#0077AA>content</font> | 二维码内容 | <font color=red>任意</font> |  <font color=#669900>暂无/false</font>  | <font color=#669900>""</font>
+<font color=#0077AA>islogo</font> | 是否要logo | <font color=red>Boolean</font> |  ``` true ``` ``` false ```  | <font color=#669900>false</font>
+<font color=#0077AA>content</font> | 二维码内容 | <font color=red>任意</font> |  ''  | <font color=#669900>""</font>
 <font color=#0077AA>logo</font> | logo配置信息对象 | <font color=red>Object</font> |  <font color=#669900>暂无</font>  | <font color=#669900>{}</font>
-<font color=#0077AA>isimgDataFile</font> | 是否需要file文件流 | <font color=red>Boolean</font> |  <font color=#669900>true / false</font>  | <font color=#669900>false</font>
-<font color=#0077AA>isimgDatabase</font> | 是否需要base64文件流 | <font color=red>Boolean</font> |  <font color=#669900>true / false</font>  | <font color=#669900>false</font>
+<font color=#0077AA>isimgDataFile</font> | 是否需要file文件流 | <font color=red>Boolean</font> | ``` true ``` ``` false ```  | <font color=#669900>false</font>
+<font color=#0077AA>isimgDatabase</font> | 是否需要base64文件流 | <font color=red>Boolean</font> |  ``` true ``` ``` false ``` | <font color=#669900>false</font>
 
 
 > <font color=#CD6600>2、logo的配置对象</font>
@@ -36,4 +84,4 @@ key|类型|说明|默认值
 事件名称|说明 |
 -----|:--:|
 <font color=#42b983>imgDataBase</font> | 获取base64文件流的回调 <font color=#FF69B4> 必须isimgDatabase = true</font> 才开启
-<font color=#42b983>imgDataFile</font> | 获取file文件流的回调 <font color=#FF69B4> 必须isimgDataFile = true</font> 才开启
+<font color=#42b983>imgDataFile</font> | 获取file文件流的回调 <font color=#FF69B4> 必须isimgDataFile = true</font> 才开启!)

@@ -6,6 +6,7 @@
         :class="[
             type ? 'fcw-button--' + type : '',
             size ? 'fcw-button--' + size : '',
+            plain?'fcw-' + type +'-plain':'',
             {
                 'fcw-is-disabled': disabled,
             }
@@ -30,13 +31,15 @@ export default {
         //加载loading
         loading:Boolean,
         //icon
-        icon:String
+        icon:String,
+        //是否朴素按钮
+        plain:Boolean
     }
 }
 </script>
 
 <style scoped lang="less">
-    .fcw-button-icon{margin-right: 5px;}
+    .fcw-button-icon{margin-right: 5px; padding: 0 5px;}
     .gf-loading{
         color: #fff;
         animation: rotate 2s linear infinite;
@@ -50,7 +53,6 @@ export default {
         color: #606266;
         display: inline-block;
         position: relative;
-        border: 1px solid #dcdfe6;
         border-radius: 4px;
         outline: none;
         cursor: pointer;
@@ -58,11 +60,20 @@ export default {
         padding: 8px 20px;
         white-space: nowrap;
         display: flex; justify-content: center; align-items: center;
+        background: #fff;
         &:hover{
             color: #409eff;
             background-color: #ecf5ff;
             border-color: #c6e2ff;
         }
+        border: 1px solid #004b9a;
+        border-bottom-color: #003f81;
+        -webkit-transition: 0.1s linear all;
+        -moz-transition: 0.1s linear all;
+        transition: 0.1s linear all;
+        border-color: #0064cd #0064cd #003f81;
+        border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
     }
     .fcw-button:active{background:	#F5F5F5;}
     .fcw-button--danger{
@@ -75,7 +86,7 @@ export default {
         background: linear-gradient(#f56c6c 0%, #f56c6c 100%);
         filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fa5a5a', endColorstr='#e85151', GradientType=0 );
         &:active {background: rgba(250,90,90,0.7)}
-        &:hover{ color: #fff;}
+        &:hover{ color: #fff; border-color: #f56c6c;}
     }
     .fcw-button--primary {
         color:#fff;
@@ -87,7 +98,7 @@ export default {
         background: linear-gradient(#409eff 0%, #409eff 100%);
         filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1bbcc2', endColorstr='#18a3a8', GradientType=0);
         &:active {background: rgba(64,158,255,0.7) }
-        &:hover{ color: #fff;}
+        &:hover{ color: #fff; border-color: #409eff;}
     }
     .fcw-button--success{
         color:#fff;
@@ -100,7 +111,7 @@ export default {
         background: linear-gradient(to bottom, #67c23a 0%, #67c23a 100%);
         filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#82c8a0', endColorstr='#82c79e', GradientType=0 );
         &:active {background:rgba(103,194,58,0.7)}
-       &:hover{ color: #fff;}
+       &:hover{ color: #fff; border-color: #67c23a;}
     }
     .fcw-button--warning{
         color:#fff;
@@ -112,7 +123,7 @@ export default {
         background: linear-gradient(#e6a23c 0%, #e6a23c 100%);
         filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0d264', endColorstr='#e5c960', GradientType=0 );
         &:active {background-color:rgba(2230,162,60,0.7);}
-        &:hover{ color: #fff;}
+        &:hover{ color: #fff; border-color:#e6a23c;}
     }
     .fcw-button--info{
         color:#fff;
@@ -124,7 +135,7 @@ export default {
         background: linear-gradient(#909399 0%, #909399 100%);
         filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0d264', endColorstr='#e5c960', GradientType=0 );
         &:active {background:rgba(144,147,153,0.7) }
-        &:hover{ color: #fff;}
+        &:hover{ color: #fff; border-color:#909399;}
     }
     .fcw-is-disabled{
         cursor: not-allowed;
@@ -138,5 +149,50 @@ export default {
     }
     .fcw-button--medium{
         padding: 7px 17px;
+    }
+    .fcw-success-plain{
+        color: #67c23a;
+        background: #f0f9eb;
+        border-color: #c2e7b0;
+        &:hover{
+            background: #67c23a;
+            border-color: #67c23a;
+        }
+    }
+    .fcw-warning-plain{
+        color: #e6a23c;
+        background: #fdf6ec;
+        border-color: #f5dab1;
+        &:hover{
+            background: #e6a23c;
+            border-color: #e6a23c;
+        }
+    }
+    .fcw-info-plain{
+        color: #909399;
+        background: #f4f4f5;
+        border-color: #d3d4d6;
+        &:hover{
+            background: #909399;
+            border-color: #909399;
+        }
+    }
+    .fcw-primary-plain{
+        color: #409eff;
+        background: #ecf5ff;
+        border-color: #b3d8ff;
+        &:hover{
+            background: #409eff;
+            border-color: #409eff;
+        }
+    }
+    .fcw-danger-plain{
+        color: #f56c6c;
+        background: #fef0f0;
+        border-color: #fbc4c4;
+        &:hover{
+            background: #f56c6c;
+            border-color: #f56c6c;
+        }
     }
 </style>

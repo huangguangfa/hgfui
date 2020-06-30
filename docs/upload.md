@@ -1,17 +1,131 @@
-> 上传组件
+### 基础用法
 
-``` javascript
-//使用
+<div class="demo-block">
+  <div class="fcw-uplaodDemo">
+    <fcw-upload 
+      ref="upload"
+      url="http://192.168.0.8:5000/oss/oss/storageObject"
+      name="file"
+      :headers="headers"
+      @success="filesuccess"
+      @previewfile="previewfile">
+    </fcw-upload>
+  </div> 
+  
+  <script>
+    export default {
+      data() {
+        return {
+          copyValue: '张三',
+          headers:{
+            Authorization:'e43241231'
+          }
+        }
+      },
+      methods:{
+        filesuccess(){
+          console.log('上传成功')
+        },
+        previewfile(file){
+          this.$message({
+            type:'success',
+            message:'假装上传成功！到自己项目请更换好的请求接口'
+          })
+          console.log(file)
+        }
+      }
+    }
+    </script>
+</div>
+
+::: demo
+
+```html
+
 <fcw-upload 
   ref="upload"
   url="http://192.168.0.8:5000/oss/oss/storageObject"
   name="file"
-  :headers="{  Authorization:'e43241231'  }"
+  :headers="headers"
   @success="filesuccess"
   @previewfile="previewfile">
 </fcw-upload>
-
+  
+<script>
+  export default {
+    data() {
+      return {
+        copyValue: '张三',
+        headers:{
+          Authorization:'e43241231'
+        }
+      }
+    },
+    methods:{
+      filesuccess(){
+        console.log('上传成功')
+      },
+      previewfile(file){
+        console.log(file)
+      }
+    }
+  }
+</script>
 ```
+:::
+
+### 使用插槽
+
+<div class="demo-block">
+  <div class="fcw-uplaodDemo">
+    <fcw-upload 
+      ref="upload"
+      url="http://192.168.0.8:5000/oss/oss/storageObject"
+      name="file"
+      :headers="headers"
+      @success="filesuccess"
+      @previewfile="previewfile">
+       <i  class="iconfont gf-tupian"></i>
+    </fcw-upload>
+  </div> 
+</div>
+
+::: demo
+
+```html
+
+<fcw-upload 
+  ref="upload"
+  url="http://192.168.0.8:5000/oss/oss/storageObject"
+  name="file"
+  :headers="headers"
+  @success="filesuccess"
+  @previewfile="previewfile">
+    <i  class="iconfont gf-tupian"></i>
+</fcw-upload>
+  
+<script>
+  export default {
+    data() {
+      return {
+        copyValue: '张三',
+        headers:{
+          Authorization:'e43241231'
+        }
+      }
+    },
+    methods:{
+      filesuccess(){
+        console.log('上传成功')
+      },
+      previewfile(file){
+        console.log(file)
+      }
+    }
+  }
+</script>
+```
+:::
 
 > <font color=#CD6600>1、参数描述</font>
 
@@ -19,11 +133,11 @@
 ---|:--:|--:|:--:|:--:|
 <font color=#0077AA>fileType</font>|<font  size=1>上传的文件类型</font>|<font color=red>String</font>| <font size=1 color=#669900>image/png,image/jpg,image/jpeg....</font>|<font color=#FFB90F size=1>image/png,image/jpg,image/jpeg</font>
 <font color=#0077AA>url</font>|<font  size=1>上传路径</font>|<font color=red>String</font>|<font color=#669900>暂无</font>|<font color=#FFB90F>https://xxxx</font>
-<font color=#0077AA>isCssions</font>|<font  size=1>开启压缩上传模式</font>|<font color=red>boolean</font>|<font color=#669900>true、false</font>|<font color=#FFB90F>false</font>
+<font color=#0077AA>isCssions</font>|<font  size=1>开启压缩上传模式</font>|<font color=red>boolean</font>|``` true ``` ``` false ```|<font color=#FFB90F>false</font>
 <font color=#0077AA>quality</font>|<font  size=1>图片压缩后的质量 <font color=#FF83FA>/最高为1最低为0.1</font> </font>|<font color=red>number</font>|<font color=#669900>0.1 ～ 1</font>|<font color=#FFB90F>0.8</font>
 <font color=#0077AA>size</font>|<font  size=1>上传文件大小</font>|<font color=red>Number</font>|<font color=#669900>暂无</font>|<font color=#FFB90F>100M</font>
-<font color=#0077AA> autoUpload </font> | <font  size=1> 是否自动上传 </font> | <font color=red> Boolean </font> | <font color=#669900> true,false  </font> | <font color=#FFB90F> true </font>
-<font color=#0077AA> isDrag </font> | <font  size=1> 是否支持拖拽 </font> | <font color=red> Boolean </font> | <font color=#669900>  true,false</font> | <font color=#FFB90F> false </font> 
+<font color=#0077AA> autoUpload </font> | <font  size=1> 是否自动上传 </font> | <font color=red> Boolean </font> | ``` true ``` ``` false ``` | <font color=#FFB90F> true </font>
+<font color=#0077AA> isDrag </font> | <font  size=1> 是否支持拖拽 </font> | <font color=red> Boolean </font> | <font color=#669900>  ``` true ``` ``` false ```</font> | <font color=#FFB90F> false </font> 
 <font color=#0077AA> name </font> | <font  size=1> 上传文件字段名(key) </font> | <font color=red> String </font> | <font color=#669900> file </font> | <font color=#FFB90F> file  </font> 
 <font color=#0077AA> data </font> | <font  size=1> 上传的额外参数 </font> | <font color=red> Object </font> | <font color=#669900>  暂无</font> | <font color=#FFB90F> {} </font> 
 <font color=#0077AA> headers </font> | <font size=1> 设置上传的请求头部 </font> | <font color=red> Object </font> | <font color=#669900> 暂无 </font> | <font color=#FFB90F> {} </font> 

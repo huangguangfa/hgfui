@@ -1,7 +1,7 @@
 <template>
     <div class="fcw-tree-node">
         
-        <div class="fcw-tree-current"   @click.stop="handleUnfoldClick(data)">
+        <div class="fcw-tree-current" @click.stop="handleUnfoldClick">
             <span 
                 v-if="isChidren()" 
                 class="iconfont gf-sanjiaoright fcw-tree-node__expand-icon"
@@ -10,10 +10,10 @@
                 }">
             </span>
 
-            <fcw-checkbox 
-                v-if="showCheckbox" 
+            <fcw-checkbox
+                v-if="showCheckbox"
                 v-model="data.check" 
-                @change="handleCheckChange" 
+                @change="handleCheckChange"
                 @click.native.stop
                 :indeterminate="data.indeterminate"
             >
@@ -23,7 +23,7 @@
         </div>
         
         <div v-if="isChidren()">
-            <div v-for="i in data.children" :key="i.id" class="fcw-tree-node__children" v-show="data.show">
+            <div v-for="i in data.children" :key="i.nodeKey" class="fcw-tree-node__children" v-show="data.show">
                 <fcw-tree-node :data="i" :show-checkbox="showCheckbox"></fcw-tree-node>
             </div>
         </div>
@@ -33,8 +33,10 @@
 
 <script>
     import fcwCheckbox from '../../fcw-checkbox/src/checkbox';
+    import emitter from '../../../utils/mixins/emitter.js';
     export default{
         name:'fcw-tree-node',
+        mixins:[ emitter ],
         components:{
             fcwCheckbox
         },
@@ -43,27 +45,22 @@
             showCheckbox: {
                 type: Boolean,
                 default: false
-            }
-        },
-        data(){
-            return{
-                
-            }
+            },
+            nodeKey:{},
         },
         methods:{
-            handleUnfoldClick(val){
-                this.$emit('nodeClick',val)
+            handleUnfoldClick(){
                 this.data.show = !this.data.show;
+                this.dispatch('fcw-tree', 'nodeClick', this.data);
             },
-            handleCheckChange(value, ev){
-                this.$emit('node-expand',data);
-                console.log(value,ev)
+            handleCheckChange(status, ev){
+                this.dispatch('fcw-tree', 'check',{
+                    checkStatus:status,
+                    value:this.data
+                });
             },
             isChidren(){
                 return this.data.children && this.data.children.length
-            },
-            handleNodeExpand(value){
-                console.log(value)
             }
         }
     }
