@@ -1,5 +1,4 @@
-
-> 日历控件（ 简易版 ）
+### 基础用法
 
 <div class="demo-block">
     <fcw-calendar   @change="change"  v-model="day"> </fcw-calendar>

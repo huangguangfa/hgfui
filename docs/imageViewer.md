@@ -2,21 +2,29 @@
 
 <div class="demo-block">
    <div class="w200">
-      <fcw-imageViewer  name="这是我的偶像" :imgUrl="imgUrl"></fcw-imageViewer>
+      <fcw-imageViewer  name="二次元小姐姐" :imgUrl="imgUrl"></fcw-imageViewer>
       <script>
             export default {
                name: 'app',
                data(){
                   return {
-                     imgUrl:'https://gf-blogs.oss-cn-shenzhen.aliyuncs.com/xy.jpg',
+                     imgUrl:'https://gf-blogs.oss-cn-shenzhen.aliyuncs.com/timg%20%281%29.jpeg',
                      imgList:[
                            {
-                              name:'大学集体合照',
-                              url:'https://gf-blogs.oss-cn-shenzhen.aliyuncs.com/0115a66fc055dfcf84ac95cd55597c19.jpg'
+                              name:'二次元小姐姐二号',
+                              url:'https://gf-blogs.oss-cn-shenzhen.aliyuncs.com/timg%20%281%29.jpeg'
                            },
                            {
-                              name:'精神偶像罗斯',
-                              url:'https://gf-blogs.oss-cn-shenzhen.aliyuncs.com/xy.jpg'
+                              name:'二次元小姐姐1号',
+                              url:'https://gf-blogs.oss-cn-shenzhen.aliyuncs.com/timg.jpeg'
+                           },
+                           {
+                              name:'二次元小姐姐2号',
+                              url:'https://gf-blogs.oss-cn-shenzhen.aliyuncs.com/%E4%BA%8C%E6%AC%A1%E5%85%831.jpeg'
+                           },
+                           {
+                              name:'二次元小姐姐3号',
+                              url:'https://gf-blogs.oss-cn-shenzhen.aliyuncs.com/%E4%BA%8C%E6%AC%A1%E5%85%83.jpeg'
                            }
                      ]
                   }
@@ -30,13 +38,13 @@
 
 ```html
 
-<fcw-imageViewer name="这是我的偶像" :imgUrl="imgUrl"></fcw-imageViewer>
+<fcw-imageViewer name="二次元小姐姐" :imgUrl="imgUrl"></fcw-imageViewer>
   <script>
       export default {
          name: 'app',
          data(){
             return {
-               imgUrl:'https://gf-blogs.oss-cn-shenzhen.aliyuncs.com/xy.jpg'
+               imgUrl:'https://gf-blogs.oss-cn-shenzhen.aliyuncs.com/timg.jpeg'
             }
          }
       }
@@ -64,14 +72,22 @@
          data(){
             return {
                imgList:[
-                     {
-                        name:'大学集体合照',
-                        url:'https://gf-blogs.oss-cn-shenzhen.aliyuncs.com/0115a66fc055dfcf84ac95cd55597c19.jpg'
-                     },
-                     {
-                        name:'精神偶像罗斯',
-                        url:'https://gf-blogs.oss-cn-shenzhen.aliyuncs.com/xy.jpg'
-                     }
+                  {
+                     name:'二次元小姐姐二号',
+                     url:'https://gf-blogs.oss-cn-shenzhen.aliyuncs.com/timg%20%281%29.jpeg'
+                  },
+                  {
+                     name:'二次元小姐姐1号',
+                     url:'https://gf-blogs.oss-cn-shenzhen.aliyuncs.com/timg.jpeg'
+                  },
+                  {
+                     name:'二次元小姐姐2号',
+                     url:'https://gf-blogs.oss-cn-shenzhen.aliyuncs.com/%E4%BA%8C%E6%AC%A1%E5%85%831.jpeg'
+                  },
+                  {
+                     name:'二次元小姐姐3号',
+                     url:'https://gf-blogs.oss-cn-shenzhen.aliyuncs.com/%E4%BA%8C%E6%AC%A1%E5%85%83.jpeg'
+                  }
                ]
             }
          }

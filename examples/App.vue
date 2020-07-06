@@ -7,23 +7,15 @@
 <script>
 import demo from './demo';
 import demoText from './common/demo';
-import navData from './nav.config.json'
 export default {
     components:{
         demo,demoText
     },
-    name: 'app',
+    name: 'App',
     data(){
         return {
-            navList:navData,
             selectPath:'',
         }
-    },
-    created(){
-        
-    },
-    methods:{
-        
     }
 }
 </script>

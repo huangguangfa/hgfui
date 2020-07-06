@@ -6,7 +6,7 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "serve": "cross-env NODE_ENV=development webpack-dev-server --env --open --hot",
+    "serve": "cross-env NODE_ENV=development webpack-dev-server --env  --hot",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
     "lib": "cross-env NODE_ENV=production webpack --env.lib --progress --hide-modules"
   },
@@ -25,6 +25,7 @@
     "markdown-it-container": "^3.0.0",
     "qrcode": "^1.4.4",
     "transliteration": "^2.1.11",
+    "uglifyjs-webpack-plugin": "^2.2.0",
     "vue": "^2.5.11",
     "vue-markdown-loader": "^2.4.1",
     "vue-router": "^3.3.4"

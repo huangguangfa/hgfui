@@ -70,7 +70,7 @@
     <fcw-input class="w250"  placeholder="请输入内容">
       <i slot="prepend" class="iconfont gf-sousuo"></i>
     </fcw-input>
-    <fcw-input class="w250 ml10"  placeholder="请输入内容">
+    <fcw-input class="w250 mt10"  placeholder="请输入内容">
       <i slot="append" class="iconfont gf-sousuo"></i>
     </fcw-input>
 </div>

@@ -17,6 +17,8 @@ let addRouter= router =>{
     ) 
   })
 }
+
+
 // let addRouter= router =>{
 //   console.log(router)
 //   // router.forEach((route) => {   

@@ -85,7 +85,7 @@
       :headers="headers"
       @success="filesuccess"
       @previewfile="previewfile">
-       <i  class="iconfont gf-tupian"></i>
+       <i  class="iconfont gf-tupian upload_6BA9DC"></i>
     </fcw-upload>
   </div> 
 </div>

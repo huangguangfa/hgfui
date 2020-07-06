@@ -58,7 +58,7 @@ export default {
 
 // 基础样式
 .fcw-gf{
-    width: 100%; height: 100vh; background: #fff;
+    width: 100%; height: 100vh; background: #fff; overflow: hidden;
     .fcw-conetn{
         width: 1140px; height: 100%; background: #fff; 
         margin: 0 auto; position: relative;

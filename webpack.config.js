@@ -3,8 +3,9 @@ var path = require('path');
 const md = require('markdown-it')//引入markdown-it
 const MarkdownItContainer = require('markdown-it-container');
 const slugify = require('transliteration').slugify;
-const striptags = require('./strip-tags')
-// var webpack = require('webpack')
+const striptags = require('./strip-tags');
+// const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+var webpack = require('webpack')
 const vueMarkdown = {
   //定义处理规则
   preprocess: (MarkdownIt, source) => {
@@ -114,14 +115,17 @@ module.exports = env =>{
     },
     resolve: {
       alias: {
-        'vue$': 'vue/dist/vue.esm.js'
+        // 'vue$': 'vue/dist/vue.esm.js'
+        'vue$': 'vue/dist/vue.common.prod.js'
       },
       extensions: ['*', '.js', '.vue', '.json']
     },
     devServer: {
       historyApiFallback: true,
       noInfo: true,
-      overlay: true
+      overlay: true,
+      hot: true,
+      open:true,
     },
     performance: {
       hints: false

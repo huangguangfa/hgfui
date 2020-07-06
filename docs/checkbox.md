@@ -51,7 +51,7 @@
 ### 多选框组 结合fcw-checkbox-group元素和子元素fcw-checkbox可以实现单选组
 
 <div class="demo-block">
-  <fcw-checkbox-group v-model="checkList" @change="radioChang">
+  <fcw-checkbox-group v-model="checkList">
     <fcw-checkbox label="1" >多选A</fcw-checkbox>
     <fcw-checkbox label="2">多选B</fcw-checkbox>
     <fcw-checkbox label="3" disabled>多选C</fcw-checkbox>
@@ -92,8 +92,8 @@ export default {
 ### indeterminate 属性用以表示 checkbox 的不确定状态，一般用于实现全选的效果
 
 <div class="demo-block">
-  <fcw-checkbox label="10" v-model="checkAll" :indeterminate="indeterminate"  @change="checkboxChangAll">全选</fcw-checkbox>
-  <fcw-checkbox-group v-model="checkList" @change="checkboxChang">
+  <fcw-checkbox label="10" v-model="checkAll" :indeterminate="indeterminate">全选</fcw-checkbox>
+  <fcw-checkbox-group v-model="checkList" >
     <fcw-checkbox label="1">多选A</fcw-checkbox>
     <fcw-checkbox label="2">多选B</fcw-checkbox>
     <fcw-checkbox label="3">多选C</fcw-checkbox>

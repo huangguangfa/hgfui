@@ -4,8 +4,7 @@
 <div class="demo-block">
   <fcw-circleview 
     :percentage="sum" 
-    :unit="个" 
-    :color="red">
+    unit="个">
   </fcw-circleview>
   <button class="mt20" @click="sum++">+</button>
   <script>
@@ -25,8 +24,8 @@
 
 <fcw-circleview 
     :percentage="sum" 
-    :unit="个" 
-    :color="red">
+    unit="个" 
+    >
   </fcw-circleview>
   <script>
     export default {
