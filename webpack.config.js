@@ -62,7 +62,7 @@ module.exports = env =>{
     output: {
       // 打包文件生成的路径
       path: path.resolve(__dirname, lib?'./lib':'./dist'),
-      publicPath: lib?'/lib/':'./',
+      publicPath: lib?'/lib/':'/dist/',
       // 打包后的文件名
       filename: lib?'gfui.js':'build.js',
       /**
