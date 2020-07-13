@@ -6,7 +6,7 @@
     <div class="separate-panel">
       <div class="about">
         <router-link :to="{path:'/fcw-ui'}">开始使用</router-link>
-        <a target="_blank" href="https://github.com/huanggungfa/hgfui" class="btn-github">GitHub</a>
+        <a target="_blank" href="https://www.huangguangfa.cn" class="btn-github">个人博客</a>
       </div>
     </div>
   </div>

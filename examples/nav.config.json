@@ -13,6 +13,11 @@
   ],
   "组件": [
     {
+      "desc": "icon组件",
+      "name": "icon",
+      "path": "/icon"
+    },
+    {
       "desc": "Button组件",
       "name": "button",
       "path": "/button"
@@ -86,6 +91,11 @@
       "desc": "checkbox多选框",
       "name": "checkbox",
       "path": "/checkbox"
+    },
+    {
+      "desc": "Tree树形控件",
+      "name": "tree",
+      "path": "/tree"
     }
   ]
 }

@@ -1,4 +1,3 @@
-
 // 从树形数据中递归筛选目标值
 function valInDeep(arr = [], val, id, childs) {
   return arr.reduce((flat, item) => {
@@ -75,7 +74,6 @@ function familyDeepflatten (arr1, id) {
   forFn(arr1, id)
   return temp;
 }
-
 
 export {
   flattenDeep, // 将树转化为一维数组

@@ -19,7 +19,7 @@
             borderRadius:30,
             logoSize:30
           },
-          content:'给大哥递支烟'
+          content:'一个追求技术的小男孩'
         }
       }
     }
@@ -48,7 +48,7 @@
             borderRadius:30,
             logoSize:30
           },
-          content:'给大哥递支烟'
+          content:'一个追求技术的小男孩'
         }
       }
     }

@@ -2,9 +2,10 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import navConfig from '../nav.config.json'
 import Home from '../common/Home.vue';
-import fcwUI from '../common/fcwUI'
+import fcwUI from '../common/fcwUI';
+import demo from '../demo.vue'
 Vue.use(Router)
-let routes = []//定义路由
+let routes = [] //定义路由
 Object.keys(navConfig).forEach((item)=>{
   routes = routes.concat(navConfig[item])
 })
@@ -38,6 +39,7 @@ let addRouter= router =>{
 //   // })
 // }
 
+
 addRouter(routes)
 
 export default new Router({
@@ -53,6 +55,10 @@ export default new Router({
     {
       path: '/',
       component: Home
+    },
+    {
+      path:'/demo',
+      component:demo
     }
   ]
   

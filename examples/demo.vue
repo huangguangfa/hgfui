@@ -1,64 +1,125 @@
 <template>
-   <div class="demo">
-       <svg width="440" height="440" viewbox="0 0 440 440">
-            <circle cx="220" cy="220" r="170" stroke-width="50" stroke="#FF0520" fill="none"></circle>
-            <circle cx="220" cy="220" stroke-dasharray="500" r="170" stroke-width="50" stroke="#D1D3D7" fill="none"></circle>
-        </svg>
+    <div class="demo">
+       <!-- <fcw-tree
+            :data="treeList"
+            show-checkbox
+            :default-checked-keys="[2]"
+            :defalut-expand-keys="[1]"
+            @node-click="nodeClick">
+        </fcw-tree> -->
+        <button @click="show = !show">异步请求选中</button>
+    <collapse-transition>
+        <div v-show="show">
+            <ul>
+                <li>xasxas</li>
+                <li>xasxas</li>
+                <li>xasxas</li>
+                <li>xasxas</li>
+                <li>xasxas</li>
+                <li>xasxas</li>
+            </ul>
+        </div>
+    </collapse-transition>
 
-        <button @click="$emit('test','提交数据')">提交查看</button>
-       <!-- demo下
-      {{count}}
-      <button @click="$emit('another')">子组件按钮</button> 
-      <demo1 v-bind="$attrs"  v-on='$listeners'/> -->
-        <!-- <label class="weui-cell weui-check__label">
-            <input type="checkbox" true-value="1" false-value="1" v-model="model" > 测试A
-            <input type="checkbox" true-value="2" false-value="2" v-model="model"> 测试B 
-        </label> -->
-
-        <!-- <input type="checkbox" value="111" v-model="model">  -->
-
-   </div>
+    </div>
 </template>
 <script>
 import demo1 from './demo1';
 import Emitter from '../utils/mixins/emitter.js';
+import CollapseTransition from '../packages/transitions/collapse-transition.js'
 export default {
     components:{
-        demo1
+        demo1,CollapseTransition
     },
-    mixins:[ Emitter],
     name: 'demo',
-    props: ['count'],
-    interitAttrs:true,
     data(){
         return{
-            trueLabel:['0'],
-            falseLabel:[]
-        }
-    },
-    created () {
-        this.$on('parantMessage', value => {
-            console.log('接收子组件数据',value)
-            // this.$emit('change', value);
-        });
-        // console.log(this.$attrs)
-        // console.log(this.$listeners)
-    },
-    computed:{
-        model:{
-            get(){
-                return ''
-            },
-            set(val){
-                console.log(val)
-            }
+            show:false,
+            checkList:[7,3],
+            treeList1:[],
+            filmList:[
+                {
+                    id:1,
+                    label:'青春偶像剧',
+                    children:[
+                        {
+                            id:2,
+                            label:'小明爬山记',
+                            pid:1,
+                        },
+                        {
+                            id:3,
+                            label:'隐秘角落',
+                            pid:1,
+                        }
+                    ]
+                },
+                {
+                    id:4,
+                    label:'电视剧',
+                    children:[
+                        {
+                            id:5,
+                            label:'迪迦奥特曼',
+                            pid:4,
+                            
+                        },
+                        {
+                            id:6,
+                            label:'火影忍者',
+                            pid:4
+                        }
+                    ]
+                }
+            ],
+
+            treeList:[
+                {
+                    id:1,
+                    label:'子级1',
+                    children:[
+                        {
+                            id:2,
+                            label:'子级1-1',
+                            pid:1,
+                            children:[
+                                {
+                                    label:'子级1-1-1',
+                                    id:7,
+                                    pid:2
+                                }
+                            ]
+                        },
+                        {
+                            id:3,
+                            label:'子级1-2',
+                            pid:1
+                        }
+                    ]
+                },
+                {
+                    id:4,
+                    label:'子级2',
+                    children:[
+                        {
+                            id:5,
+                            label:'子级2-1',
+                            pid:4
+                        },
+                        {
+                            id:6,
+                            label:'子级2-2',
+                            pid:4
+                        }
+                    ]
+                }
+           ] 
         }
     },
     methods:{
-        handleChange(){
-            this.dispatch('fcw-radio', 'radioChang', [this.value]);
+        nodeClick(row){
+            console.log(row)
         }
-        
     }
 }
 </script>

@@ -3,8 +3,10 @@
 
 ```html
 
-//安装
+//yarn安装
 yarn add fcw-gf
+
+// npm 安装
 npm install --save-dev fcw-gf
 
 //min.js 引入使用

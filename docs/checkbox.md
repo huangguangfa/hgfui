@@ -2,14 +2,16 @@
 ### 基础用法
 
 <div class="demo-block">
-  <fcw-checkbox label="1" v-model="checkList">多选A</fcw-checkbox>
-  <fcw-checkbox label="2" v-model="checkList">多选B</fcw-checkbox>
-  <fcw-checkbox label="3" v-model="checkList" disabled>多选C</fcw-checkbox>
+  <fcw-checkbox label="1" v-model="checked">多选A</fcw-checkbox>
+  <fcw-checkbox label="2" v-model="checked">多选B</fcw-checkbox>
+  <fcw-checkbox label="3" v-model="checked" disabled>多选C</fcw-checkbox>
   <script>
     export default {
       data() {
         return {
+          checked:['2','3'],
           checkList:['3'],
+          checkBox:['3'],
           indeterminate:true,
           checkAll:false
         }
@@ -39,7 +41,7 @@
   export default {
     data() {
       return {
-        checkList:['3']
+        checked:['2','3']
       }
     }
   }
@@ -51,20 +53,11 @@
 ### 多选框组 结合fcw-checkbox-group元素和子元素fcw-checkbox可以实现单选组
 
 <div class="demo-block">
-  <fcw-checkbox-group v-model="checkList">
+  <fcw-checkbox-group v-model="checkBox">
     <fcw-checkbox label="1" >多选A</fcw-checkbox>
     <fcw-checkbox label="2">多选B</fcw-checkbox>
     <fcw-checkbox label="3" disabled>多选C</fcw-checkbox>
   </fcw-checkbox-group>
-  <script>
-    export default {
-      data() {
-        return {
-          checkList:['3']
-        }
-      }
-    }
-    </script>
 </div>
 
 ::: demo
@@ -80,7 +73,7 @@
 export default {
   data() {
     return {
-      checkList:['3']
+      checkBox:['3']
     }
   }
 }

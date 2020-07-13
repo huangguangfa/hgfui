@@ -16,7 +16,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="fcw-right fadeInLeft">
+                <div class="fcw-right fadeInLeft" ref="fcwRight">
                     <div className="contentHtml">
                         <router-view class="page"></router-view>
                     </div>  
@@ -37,11 +37,9 @@ export default {
             selectPath:'/fcw-ui',
         }
     },
-    created(){
-        
-    },
     methods:{
         toRouter(path){
+            this.$refs.fcwRight.scrollTop = 0;
             if( this.selectPath === path){ return false }
             this.selectPath = path;
             this.$router.push({

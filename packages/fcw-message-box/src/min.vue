@@ -11,8 +11,8 @@
                     <p>{{ content }}</p>
                 </div>
                 <div class="mes-box-action">
-                    <fcw-Button class="mar-r10" @click="hide">取 消</fcw-Button>
-                    <fcw-Button type="primary" @click="confirm">确 定</fcw-Button>
+                    <fcw-Button size="mini" class="mar-r10" @click="hide">取 消</fcw-Button>
+                    <fcw-Button size="mini" type="primary" @click="confirm">确 定</fcw-Button>
                 </div>
             </div>
         </div>
