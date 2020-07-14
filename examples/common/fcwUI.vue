@@ -53,7 +53,6 @@ export default {
 }
 </script>
 <style lang="less">
-
 // 基础样式
 .fcw-gf{
     width: 100%; height: 100vh; background: #fff; overflow: hidden;
@@ -110,6 +109,9 @@ export default {
                 border-right: 2px solid rgba(64,158,255,0.7);
                 color: #0dabdd;
             }
+        }
+        ul:nth-child(3){
+            padding-bottom: 40px;
         }
     }
     .fcw-left:hover{overflow: auto;}

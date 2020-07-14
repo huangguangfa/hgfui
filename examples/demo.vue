@@ -1,26 +1,16 @@
 <template>
     <div class="demo">
-       <!-- <fcw-tree
-            :data="treeList"
-            show-checkbox
-            :default-checked-keys="[2]"
-            :defalut-expand-keys="[1]"
-            @node-click="nodeClick">
-        </fcw-tree> -->
-        <button @click="show = !show">异步请求选中</button>
-    <collapse-transition>
-        <div v-show="show">
-            <ul>
-                <li>xasxas</li>
-                <li>xasxas</li>
-                <li>xasxas</li>
-                <li>xasxas</li>
-                <li>xasxas</li>
-                <li>xasxas</li>
-            </ul>
-        </div>
-    </collapse-transition>
-
+       <fcw-upload 
+            ref="upload"
+            url="http://192.168.0.18:5000/oss/oss/storageObject"
+            name="file"
+            :headers="headers"
+            @success="filesuccess"
+            >
+        </fcw-upload>
+        
+        <!-- <button @click="show = !show">异步请求选中</button> -->
+        <!-- :headers="headers" -->
     </div>
 </template>
 <script>
@@ -72,7 +62,9 @@ export default {
                     ]
                 }
             ],
-
+            headers:{
+                Authorization:'1282855124849242114'
+            },
             treeList:[
                 {
                     id:1,
@@ -117,6 +109,9 @@ export default {
         }
     },
     methods:{
+        filesuccess(result){
+            console.log(result)
+        },
         nodeClick(row){
             console.log(row)
         }
@@ -129,5 +124,5 @@ circle {
     -webkit-transition: stroke-dasharray .25s;
     transition: stroke-dasharray .25s;
 }
-// .demo{border: 1px solid red;}
+.demo{width: 400px; height: 100px; }
 </style>

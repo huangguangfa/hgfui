@@ -1,5 +1,5 @@
 <template>
-    <div class="upload"  :class="isDropAims === true?'Drop':''" ref="circle">
+    <div class="upload"  :class="isDropAims === true?'Drop':''" ref="upload">
         <input type="file" :accept="fileType"  class="upload-file" @change="handleFileChange" ref="inputer">
         <div class="remind"
             ref="input_substitute"

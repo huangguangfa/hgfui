@@ -111,6 +111,7 @@
                         //找到当前勾选的数据把他下面的子级递归为一维数组、并且把子级全部设置为当前勾选的状态 true || false
                         let childrenFlaten = flattenDeep( [ item ], this.props.children );
                         childrenFlaten.forEach( item => { item.check = checkStatus } );
+                        item.indeterminate = false;
                     }else{
                         let check = true;
                         let indeterminate = false;

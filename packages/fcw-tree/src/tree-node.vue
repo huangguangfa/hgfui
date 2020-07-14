@@ -27,15 +27,13 @@
             <span class="fcw-tree-node__label" :class="!showCheckbox ?'tree_hover':''">{{ data[ label ] }}</span>
 
         </div>
-        
-        <div v-if="isChidren()">
-            <fcw-collapse-transition>
-                <div v-for="i in data.children" :key="i.nodeKey" class="fcw-tree-node__children" v-show="data.show">
-                    <fcw-tree-node :data="i" :label="label" :show-checkbox="showCheckbox"></fcw-tree-node>
+         <fcw-collapse-transition>
+            <div v-show="data.show">
+                <div v-for="i in data.children"  :key="i.nodeKey" class="fcw-tree-node__children" >
+                    <fcw-tree-node  :data="i" :label="label" :show-checkbox="showCheckbox"></fcw-tree-node>
                 </div>
-            </fcw-collapse-transition>
-        </div>
-        
+            </div>
+         </fcw-collapse-transition>
     </div>
 </template>
 

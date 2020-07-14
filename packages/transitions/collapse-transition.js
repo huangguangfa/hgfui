@@ -3,10 +3,8 @@ function Transition(){}
 Transition.prototype.beforeEnter = function(el) {
   addClass(el, 'collapse-transition')
   if (!el.dataset) el.dataset = {}
-
-  el.dataset.oldPaddingTop = el.style.paddingTop
+  el.dataset.oldPaddingTop = el.style.paddingTop 
   el.dataset.oldPaddingBottom = el.style.paddingBottom
-
   el.style.height = '0'
   el.style.paddingTop = 0
   el.style.paddingBottom = 0
