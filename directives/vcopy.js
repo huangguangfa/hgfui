@@ -1,4 +1,4 @@
-const vCopy = { 
+export default { 
     bind(el, { value }) { 
         el.$value = value; 
         el.handler = (e) => {
@@ -51,5 +51,4 @@ const vCopy = {
     },
     
 };
-  
-export default vCopy;
+

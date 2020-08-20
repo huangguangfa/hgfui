@@ -28,8 +28,10 @@
                 @blur="handleBlur"
             />
             <!-- 操作元素 -->
-            <span class="fcw_input__suffix"  v-if="getSuffixVisible()">
-                <i class="iconfont gf-cuo1"  @click="clear" v-if="clearable && value.length"></i>
+            <span class="fcw_input__suffix"  v-if="getSuffixVisible()" :class="{
+                'disabled-suffix':disabled === true,
+            }">
+                <i class="iconfont gf-cuo1"  @click="clear" v-if="clearable && value && value.length"></i>
                 <i class="iconfont gf-yanjing"  @click="handlePasswordVisible" v-if="showPassword && value && value.length"></i>
             </span>
 
@@ -144,7 +146,6 @@ export default {
             outline: none;
             padding: 0 15px; font-size: 12px;
             transition: border-color .2s cubic-bezier(.645,.045,.355,1);
-            cursor: pointer;
             width: 100%;
         }
         .fcw-input-inner:focus{outline: none; border-color: #409eff; box-shadow: 0 0 0 2px rgba(45,140,240,.2);}
@@ -164,9 +165,12 @@ export default {
     }
 
     .fcw_input__suffix{
-        position: absolute; top: 50%; margin-top: -10px; right: 7px; 
+        position: absolute; top: 50%; margin-top: -10px; right: 7px; z-index:99;background:#fff;
         .gf-cuo1{font-size: 20px; color: #606266; cursor: pointer;}
         .gf-yanjing{color: #606266; cursor: pointer; color: #c0c4cc;}
+    }
+    .disabled-suffix{
+        i{background:#f3f3f3;}
     }
     .fcw-input-group__prepend{ 
         position: absolute; height: 100%; display: flex; align-items: center; justify-content: center; width: 25px; margin-left: 4px; color: #c0c4cc; top: 0;

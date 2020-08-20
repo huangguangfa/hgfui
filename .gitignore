@@ -4,6 +4,7 @@ dist/
 npm-debug.log/
 yarn-error.log/
 package-lock.json/
+fcw-ui/
 
 # Editor directories and files
 .idea

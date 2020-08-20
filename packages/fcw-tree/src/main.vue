@@ -96,7 +96,6 @@
                 })
                 //拷贝
                 this.treeData = deepClone(this.data);
-
             },
             defaultChecked(){
                 this.defaultCheckedKeys.forEach( id =>{

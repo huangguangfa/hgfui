@@ -85,6 +85,11 @@ export default {
         //最大允许上传个数	
         limit:{
             type:Number
+        },
+        //是否获取上传图片大小
+        isWH:{
+            type:Boolean,
+            default:false
         }
     },
     components:{
@@ -104,8 +109,8 @@ export default {
     },
     mounted(){
         this.$_inputDOM = this.$refs.inputer;
-        let offsetWidth = this.$refs.circle.offsetWidth;
-        let offsetHeight = this.$refs.circle.offsetHeight;
+        let offsetWidth = this.$refs.upload.offsetWidth;
+        let offsetHeight = this.$refs.upload.offsetHeight;
         this.circleWidth = (offsetWidth > offsetHeight ? offsetHeight:offsetWidth) - 20;
     },
     methods: {
@@ -125,12 +130,59 @@ export default {
             this.$emit('previewfile',file);
             this.autoUpload === true && this.upload(file);
         },
+        //获取图片的宽高
+        getImgWidthHeight(file){
+            return new Promise( (resolve, reject) =>{
+                let reader = new FileReader();
+                reader.onload =  (e) => {
+                    let data = e.target.result;
+                    let image = new Image();
+                    image.src= data;
+                    image.onload = () =>{
+                        let width = image.width;
+                        let height = image.height;
+                        resolve({
+                            w:width,
+                            h:height
+                        })
+                    };
+                };
+                reader.readAsDataURL(file);
+            })
+        },
+        //获取视频宽高
+        getVideoWidthHeight(fileObj){
+            return new Promise( (resolve, reject) =>{
+                let videoUrl = URL.createObjectURL(fileObj);
+                let videoObj = document.createElement("video");
+                videoObj.onloadedmetadata =  (evt) => {
+                    URL.revokeObjectURL(videoUrl);
+                    let width = videoObj.videoWidth;
+                    let height = videoObj.videoHeight;
+                    resolve({
+                        w:width,
+                        h:height
+                    })
+                };
+                videoObj.src = videoUrl;
+                videoObj.load();
+            })
+        },
         //单图上传
         async upload(file){
             this.logding = true;
             let fileformData = this.getFileParam(file);
             try {
                 let result = await upload(this.url,fileformData);
+                //获取宽高
+                if(this.isWH){
+                    let getWh =  file.type.indexOf('image') !== -1 ? 
+                    await this.getImgWidthHeight(file) 
+                    : await this.getVideoWidthHeight(file);
+                    result.width = getWh.w;
+                    result.height = getWh.h;
+                    this.$emit('getWidthHeight',getWh);
+                }
                 this.onsuccess(result);
             } catch (err) {
                 this.onError(err)

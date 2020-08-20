@@ -59,14 +59,14 @@ Transition.prototype.afterLeave = function(el) {
   el.style.paddingTop = el.dataset.oldPaddingTop
   el.style.paddingBottom = el.dataset.oldPaddingBottom
 }
+
 export default {
-  name: 'MyCollapseTransition',
+  name: 'fcwCollapseTransition',
   functional: true,
   render (h, test) {
     const data = {
       on: new Transition
     }
-
     return h('transition', data, test.children)
   }
 }

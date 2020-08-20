@@ -23,6 +23,7 @@ import fcwcheckboxgroup from './fcw-checkbox/src/main.vue';
 import fcwcheckbox from './fcw-checkbox/src/checkbox.vue';
 import fcwtable from './fcw-table/src/main.vue';
 import fcwtree from './fcw-tree/src/main.vue';
+import fcwTimePicker from './fcw-timePicker/src/main.vue'
 
 // 导入指令
 import copy from '../directives/vcopy';
@@ -52,8 +53,8 @@ const components = {
     fcwcheckbox, //多选
     fcwtable, //表格
     fcwtree,//树形控件
+    fcwTimePicker, //时间选择器
 }
-
 //定义原型方法组件
 const vuePrototype = {
     fcwmessage, //消息对话提示框
@@ -65,12 +66,10 @@ const directives = {
     copy,  //v-copy
     clickoutside  //v-clickoutside
 };
-
 // 定义install方法
 const install = function (Vue) {
-
     //注册原型方法组件
-    Object.keys(vuePrototype).map( key => {
+    Object.keys( vuePrototype ).map( key => {
         Vue.use( vuePrototype[ key ] );
     })
 
@@ -86,10 +85,12 @@ const install = function (Vue) {
 
 }
 
-// 引入
+//引入
 if( typeof window !== 'undefined' && window.Vue ){
     install( window.Vue );
 };
+
+
 
 //导出整体
 export default {
@@ -97,5 +98,7 @@ export default {
     // 组件列表
     ...components,
     // 指令列表
-    ...directives
+    ...directives,
+    //原型方法组件
+    ...vuePrototype
 }

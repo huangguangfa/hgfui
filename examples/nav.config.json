@@ -28,6 +28,12 @@
       "path": "/calendar"
     },
     {
+      "desc": "时间选择器(人性化)",
+      "name": "timePicker",
+      "path": "/timePicker"
+    },
+
+    {
       "desc": "Input输入框",
       "name": "input",
       "path": "/input"

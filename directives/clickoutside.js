@@ -3,7 +3,7 @@ import { on } from '../utils/dom';
  
 const nodeList = [];
 const ctx = '@@clickoutsideContext';
- 
+
 let startClick;
 let seed = 0;
 
@@ -25,7 +25,7 @@ function createDocumentHandler(el, binding, vnode) {
       (vnode.context.popperElm &&
       (vnode.context.popperElm.contains(mouseup.target) ||
       vnode.context.popperElm.contains(mousedown.target)))) return;
- 
+
     if (binding.expression &&
       el[ctx].methodName &&
       vnode.context[el[ctx].methodName]) {
@@ -64,7 +64,6 @@ export default {
  
   unbind(el) {
     let len = nodeList.length;
- 
     for (let i = 0; i < len; i++) {
       if (nodeList[i][ctx].id === el[ctx].id) {
         nodeList.splice(i, 1);

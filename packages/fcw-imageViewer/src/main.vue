@@ -219,7 +219,7 @@ export default {
         position: absolute;
         left:10px;
         top: 20px;
-        img{width: 50px; height: 50px;margin: 0 4px;  border: 2px solid transparent;  border-radius: 5px; cursor: pointer;}
+        img{width: 50px; height: 50px;margin: 0 4px;  border: 2px solid transparent;  border-radius: 5px; cursor: pointer; object-fit:cover;}
         .selectedImg{
             border-color: #87CEFA;
         }

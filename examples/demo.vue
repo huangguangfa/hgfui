@@ -1,29 +1,40 @@
 <template>
     <div class="demo">
-       <fcw-upload 
+       <!-- <fcw-upload 
             ref="upload"
             url="http://192.168.0.18:5000/oss/oss/storageObject"
             name="file"
             :headers="headers"
             @success="filesuccess"
             >
-        </fcw-upload>
-        
+        </fcw-upload> -->
+        <!-- <fcw-select v-model="selectText" :select-data="selectList" :options="options"></fcw-select> -->
         <!-- <button @click="show = !show">异步请求选中</button> -->
         <!-- :headers="headers" -->
+        <!-- <button @click="mes">查询</button> -->
+        <!-- <fcw-time-picker v-model="time" type="timerange" format="HH点mm分ss秒" distinguish="至"></fcw-time-picker> -->
+        <fcw-time-picker v-model="time" format="HH点mm分ss秒"  distinguish="至"></fcw-time-picker>
     </div>
 </template>
 <script>
-import demo1 from './demo1';
 import Emitter from '../utils/mixins/emitter.js';
 import CollapseTransition from '../packages/transitions/collapse-transition.js'
 export default {
     components:{
-        demo1,CollapseTransition
+        CollapseTransition
     },
     name: 'demo',
     data(){
         return{
+            // time:["05点03分04秒", "07点11分28秒"],
+            time:'05点03分04秒',
+            options:{ label:'name', value:'id' },
+            selectText:'',
+            selectList:[
+               { id:'2', name:'西瓜' },
+               { id:'1', name:'菠萝' },
+               { id:'3', name:'香蕉' }
+            ],
             show:false,
             checkList:[7,3],
             treeList1:[],
@@ -108,7 +119,18 @@ export default {
            ] 
         }
     },
+    mounted(){
+        // setTimeout(()=>{
+        //     this.time = ['01点05分22秒','02点05分22秒']
+        // },2000)
+    },
     methods:{
+        mes(){  
+            this.$message({
+                message:'测试消息',
+                type:'success'
+            })
+        },
         filesuccess(result){
             console.log(result)
         },
@@ -124,5 +146,5 @@ circle {
     -webkit-transition: stroke-dasharray .25s;
     transition: stroke-dasharray .25s;
 }
-.demo{width: 400px; height: 100px; }
+.demo{width: 400px; height: 600px;display: flex;justify-items: center;align-items: center;margin: 0 auto; }
 </style>
