@@ -1,6 +1,6 @@
 <template>
-  <div class="docs-demo-wrapper">
-      <div :style="{height: isExpand ? 'auto' : '0'}" class="demo-container">
+  <div class="docs-demo-wrapper" ref="demoWrapper">
+      <div class="demo-container">
         <div span="14">
           <div class="docs-demo docs-demo--expand">
             <div class="highlight-wrapper">
@@ -21,6 +21,19 @@
       return {
         isExpand: false
       };
+    },
+    computed:{
+      codeArea() {
+        return this.$el.getElementsByClassName('demo-container')[0];
+      },
+      codeAreaHeight() {
+        return this.$el.getElementsByClassName('highlight-wrapper')[0].clientHeight;
+      }
+    },
+    watch: {
+      isExpand(val) {
+        this.codeArea.style.height = val ? `${ this.codeAreaHeight + 1 }px` : '0';
+      }
     },
     methods: {
       toggle() {
@@ -45,8 +58,9 @@
     -webkit-font-smoothing: auto;
 }
   .demo-container {
-    transition:  all .6s linear;
+    transition: height .2s;
     overflow: hidden;
+    height: 0px;
   }
   .docs-demo {
     width: 100%;

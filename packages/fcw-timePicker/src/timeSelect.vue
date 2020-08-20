@@ -59,7 +59,6 @@
                     return item.value || 0;
                 })
                 let time = this.handleTime(timeArrValue);
-
                 this.submitTime(time);
             },
             submitTime(data){

@@ -255,7 +255,6 @@ export default {
                 var tm = window.setTimeout(function() { //处理图片位移闪现
                     clearTimeout(tm);
                     //查询
-                    console.log(that.can.toDataURL('image/jpg'))
                     // if (fn){fn(that.can.toDataURL('image/jpg'));} //将截取图片导出
                 }, 100);
             };

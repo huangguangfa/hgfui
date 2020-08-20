@@ -7,7 +7,7 @@
                 :id="getId(index)"
                 @click="goAnchor(index)"
                 :class="{'fcw-time-picker-cells-cell-selected':currentItem == index}">
-                {{ index >= 10 ? index : `0${index}` }}
+                {{ formatTime(index) }}
             </li>
         </ul>
     </div>
@@ -54,7 +54,10 @@
             getId(index){
                 let value = index >=10?index:`0${index}`;
                 return 'anchor-'+value
-            }
+            },
+            formatTime (text) {
+                return text < 10 ? '0' + text : text;
+            },
         }
     }
 </script>

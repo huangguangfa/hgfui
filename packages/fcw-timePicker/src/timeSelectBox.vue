@@ -13,19 +13,27 @@
                 <timeSelect @submitTime="handleTimerange($event,'endTime')" :format="format" :isConstraint="isConstraint" :timeValue="endTime"></timeSelect>
             </div>
         </div>
+        <!-- 确认操作按钮 -->
+        <Confirm 
+            v-if="confirm"
+            @on-pick-clear="onPickClear"
+            @on-pick-success="onPickSuccess">
+        </Confirm>
     </div>
 </template>
 <script>
     import timeSelect from './timeSelect.vue';
+    import Confirm from '../../base/confirm';
     export default{
         props:{
             value:[String,Array],
             format:String,
             type:String,
             isConstraint:Boolean,
+            confirm:Boolean
         },
         components:{
-            timeSelect
+            timeSelect,Confirm
         },
         data(){
             return {
@@ -54,7 +62,8 @@
                 this.startTime && spliceTime.push(this.startTime);
                 this.endTime && spliceTime.push(this.endTime);
                 this.submitTime(spliceTime);
-                this.timeConstraint(time,type);
+                //是否需要时间约束
+                this.isConstraint && this.timeConstraint(time,type);
 
             },
             //通知
@@ -81,7 +90,7 @@
             //时间约束
             timeConstraint(time,type){
                 let [ startH,startM,startS ] =  this.startTime.match(/\d+/g).map( item => { return Number(item) });
-                let [ endH,endM,endS ] = this.endTime.match(/\d+/g).map( item => { return Number(item) });
+                let [ endH,endM,endS ] = this.endTime.match(/\d+/g) !== null?this.endTime.match(/\d+/g).map( item => { return Number(item) }):['00','00','00']; //防止报错
                 let pType = this.getFormatName(this.format);
                 let startData = [ startH,startM,startS ];
                 let endData = [ endH,endM,endS ];
@@ -124,7 +133,16 @@
                         this.endTime = `${hour}${minute}${second}`;
                     })
                 }
-
+            },
+            //取消
+            onPickClear(){
+                this.$parent.timeClear();
+                this.onPickSuccess();
+            },
+            //确认
+            onPickSuccess(){
+                this.$parent.timeSelect = false;
+                this.$emit('on-pick-success-notice')
             }
         }
     }
@@ -132,7 +150,7 @@
 <style lang="less" scoped>
     .timeSelectBox{
         position: absolute;top: 45px;background: #fff;right: 0;
-        box-shadow: 0 1px 6px rgba(0,0,0,.2); border-radius: 5px;z-index:99999999999999999;
+        box-shadow: 0 1px 6px rgba(0,0,0,.2); border-radius: 5px;z-index:99;
         .timerange-dropdown{
             display: flex;
             .start-timerange{width: 50%;}

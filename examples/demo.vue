@@ -12,22 +12,31 @@
         <!-- <button @click="show = !show">异步请求选中</button> -->
         <!-- :headers="headers" -->
         <!-- <button @click="mes">查询</button> -->
-        <!-- <fcw-time-picker v-model="time" type="timerange" format="HH点mm分ss秒" distinguish="至"></fcw-time-picker> -->
-        <fcw-time-picker v-model="time" format="HH点mm分ss秒"  distinguish="至"></fcw-time-picker>
+        <fcw-time-picker 
+            v-model="time" 
+            type="timerange" 
+            format="HH点mm分ss秒" 
+            distinguish="至" 
+            @on-ok="onok"
+            confirm></fcw-time-picker>
+        <!-- <fcw-time-picker v-model="time" format="HH点mm分ss秒"  distinguish="至"></fcw-time-picker> -->
     </div>
 </template>
 <script>
 import Emitter from '../utils/mixins/emitter.js';
 import CollapseTransition from '../packages/transitions/collapse-transition.js'
+import test from './test'
 export default {
     components:{
         CollapseTransition
     },
     name: 'demo',
+    mixins:[test],
     data(){
         return{
+            time:[],
             // time:["05点03分04秒", "07点11分28秒"],
-            time:'05点03分04秒',
+            // time:'05点03分04秒',
             options:{ label:'name', value:'id' },
             selectText:'',
             selectList:[
@@ -125,6 +134,9 @@ export default {
         // },2000)
     },
     methods:{
+        onok(time){
+            console.log(time)
+        },
         mes(){  
             this.$message({
                 message:'测试消息',

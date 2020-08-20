@@ -4,7 +4,15 @@
             <i slot="append" class="iconfont gf-shijian00"></i>
         </fcw-input>
         <transition name="timefade">
-            <timeSelectBox v-show="timeSelect" @timeSelectClick="timeSelectClick" v-model="value" :isConstraint="isConstraint" :format="format" :type="type"></timeSelectBox>
+            <timeSelectBox 
+                :confirm="confirm" 
+                v-show="timeSelect" 
+                @timeSelectClick="timeSelectClick" 
+                v-model="value" 
+                :isConstraint="isConstraint" 
+                :format="format" 
+                :type="type"
+                @on-pick-success-notice="onPickSuccessNotice"></timeSelectBox>
         </transition>
     </div>
 </template>
@@ -43,7 +51,9 @@
                 default:true
             },
             //是否禁用
-            disabled:Boolean
+            disabled:Boolean,
+            //是否支持提交按钮
+            confirm:Boolean
         },
         mixins:[ emitter ],
         name:"fcwTimePicker",
@@ -106,6 +116,9 @@
                 this.$nextTick( ()=>{
                     this.broadcast('timeValue','inputFocus',true)
                 })
+            },
+            onPickSuccessNotice(){
+                this.$emit('on-ok',this.value);
             }
         }
     }

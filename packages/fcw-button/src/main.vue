@@ -57,7 +57,6 @@ export default {
         outline: none;
         cursor: pointer;
         margin:5px 0px;
-        padding: 8px 20px;
         white-space: nowrap;
         display: flex; justify-content: center; align-items: center;
         background: #fff;
@@ -142,7 +141,7 @@ export default {
         opacity: 0.6;
     }
     .fcw-button--mini{
-        padding: 4px 10px;
+        padding: 5px 10px;font-size: 12px;
     }
     .fcw-button--small{
         padding: 6px 15px;
