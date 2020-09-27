@@ -7,6 +7,7 @@
             v-model="item.value"
             @timeSelect="timeSelect">
         </timeValue>
+        {{ hoursList }}
     </div>
 </template>
 
@@ -24,20 +25,20 @@
             return{
                 timeList:[
                     {
-                        sum:23,
+                        sum:24,
                         type:'hour',
                         value:null
                     },
                     {
-                        sum:59,
+                        sum:60,
                         type:'minute',
                         value:null
                     },
                     {
-                        sum:59,
+                        sum:60,
                         type:'second',
                         value:null
-                    },
+                    }
                 ],
                 currentTime:null
             }
@@ -50,12 +51,20 @@
         created(){
             //时间处理
             this.timeValue && this.getFormatTime(this.timeValue);
-            //约束处理
-            this.isConstraint && this.timeConstraint(this.constraint);
         },
+        // computed:{
+        //     timeList(){
+        //         let timeList = [];
+        //         timeList.push( { sum:24, type:'hour', value:null })
+        //         timeList.push( { sum:60, type:'minute',value:null })
+        //         this.format.includes('s') &&  timeList.push( { sum:60, type:'second',value:null })
+        //         return timeList;
+        //     }
+        // },
         methods:{
-            timeSelect(val){
+            timeSelect(){
                 let timeArrValue = this.timeList.map( item =>{
+                    if(!item.value) item.value = 0;
                     return item.value || 0;
                 })
                 let time = this.handleTime(timeArrValue);
@@ -69,14 +78,16 @@
             handleTime(time){
                 //判断是否是双还是单、并获取动态name
                 let {type,value} = this.checkFormat();
-                let hour = this.formatFn(type,time[0]) + (value[0] || '');
-                let minute = this.formatFn(type,time[1]) +(value[1] || '');
-                let second = this.formatFn(type,time[2]) + (value[2] || '');
-                return `${hour}${minute}${second}`;
+                //时分秒--->00时00分00秒
+                let hourMinuteSecond = '';
+                time.forEach( (item,index) =>{
+                    hourMinuteSecond += this.formatFn(type,item) + ( value[index] || '' );
+                })
+                return hourMinuteSecond;
             },
             //验证是否真确格式
             checkFormat(){
-                let status = this.format.length === 9 || this.format.length === 6 || this.format.length === 8;
+                let status = this.format.length === 9 || this.format.length === 6 || this.format.length === 8 || this.format.length === 3 || this.format.length === 5;
                 //最基本都没匹配成功
                 if(!status){ 
                     return this.getCheckFormat('double','HH点mm分ss秒');
@@ -93,14 +104,14 @@
             getCheckFormat(type,format){
                 return {
                     type:type || 'double',
-                    value: this.getFormatName(format || this.format)
+                    value:this.getFormatName(format || this.format)
                 }
             },
             //格式组装
-            formatFn(type,value){ //double - single
+            formatFn(type,value){   //double - single
                 if(type === 'double' && value < 10) { return '0' + value;} else { return value; }
             },
-            //拆出动态的时-分-秒
+            //拆出动态的时-分-秒 
             getFormatName(value){
                 let val = value.split('').filter( item =>{
                     if(item !== "H" && item !== "m" && item !== "s"){ return item }
@@ -113,12 +124,14 @@
                 hms && hms.find( (item,index) =>{
                     let value = Number(item);
                     //05 -> 5
-                    this.timeList[index].value =  value;
+                    if(this.timeList[index]){
+                        this.timeList[index].value =  value;
+                    }
                 })
                 //没有就清空
                 if(!hms){
                     this.timeList.forEach( item =>{
-                        item.value = ''
+                        item.value = null
                     })
                 }
             }

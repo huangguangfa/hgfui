@@ -1,18 +1,50 @@
 <template>
     <div class="test">
-        混入组件
+        
+        <button @click="submit">提交数据</button>
+
+        <component :is="panel"></component>
+
     </div>
 </template>
 
 <script>
     export default{
-        data(){
-            return {
-                aaa:'我是混入组件属性'
+        props:{
+            value:Object
+        },  
+        created(){
+            console.log('created监听是否有值---->',this.value)
+        },
+        watch:{
+            value(newVal,oldVal){
+                console.log('监听到有数据变化----->',newVal)
             }
         },
-        created(){
-            console.log('直接混入',this.time)
+        data(){
+            return {
+                panel:'demoTwo',
+            }
+        },
+        methods:{
+            submit(){
+                this.panel = 'demoOne'
+                // let obj = { name:'修改后的数据'}
+                // this.$emit('input',obj)
+            },
+            deepClone(obj){
+                let target = {};
+                for( let key in obj){
+                    if(Object.prototype.hasOwnProperty.call(obj,key)){
+                        if(typeof obj[key] === 'object'){
+                            target[key] = this.deepClone(obj[key])
+                        }else{
+                            arget[key] = obj[key]
+                        }
+                    }
+                }
+                return target
+            }
         }
     }
 </script>

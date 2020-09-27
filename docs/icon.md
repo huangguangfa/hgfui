@@ -3,7 +3,7 @@
 <div class="demo-block">
    <div>
       <ul class="iconfont_com">
-        <li v-for="(icon,index) in icom" :key="index">
+        <li v-for="(icon,index) in icom" :key="index" style="cursor: pointer;" @click="copyIcon(icon)">
             <i class="iconfont" :class="icon"></i>
             <span>{{ icon }}</span>
         </li>
@@ -35,6 +35,23 @@
                         'gf-jian',
                         'gf-fuzhi'
                     ]
+                  }
+               },
+               methods:{
+                  copyIcon(text){
+                     //创建copy元素
+                     const $textarea = document.createElement('textarea');
+                     $textarea.readOnly = 'readonly';
+                     $textarea.style.position = 'absolute';
+                     $textarea.style.left = '-9999px';
+                     $textarea.value = text;
+                     document.body.appendChild($textarea);
+                     $textarea.select();
+                     const result = document.execCommand('Copy');
+                     if (result) {
+                        this.$message({  type:'success',  message:'复制成功！'})
+                     }
+                     document.body.removeChild($textarea);
                   }
                }
             }

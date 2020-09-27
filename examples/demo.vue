@@ -12,30 +12,37 @@
         <!-- <button @click="show = !show">异步请求选中</button> -->
         <!-- :headers="headers" -->
         <!-- <button @click="mes">查询</button> -->
-        <fcw-time-picker 
+        <!-- <fcw-time-picker 
             v-model="time" 
             type="timerange" 
-            format="HH点mm分ss秒" 
+            format="HH点mm分" 
             distinguish="至" 
             @on-ok="onok"
-            confirm></fcw-time-picker>
-        <!-- <fcw-time-picker v-model="time" format="HH点mm分ss秒"  distinguish="至"></fcw-time-picker> -->
+            confirm>
+        </fcw-time-picker> -->
+        <!-- <test v-model="text"></test> -->
+        <!-- <fcw-time-picker v-model="time" format="HH:mm:ss" type="timerange" distinguish="至" ></fcw-time-picker> -->
+        <!-- <Case v-model="time"></Case> -->
+        <crop></crop>
     </div>
 </template>
 <script>
 import Emitter from '../utils/mixins/emitter.js';
 import CollapseTransition from '../packages/transitions/collapse-transition.js'
 import test from './test'
+import  Case from './demoCom/demo.js'
+import crop from './demoCom/crop';
 export default {
     components:{
-        CollapseTransition
+        CollapseTransition,test,Case,crop
     },
     name: 'demo',
-    mixins:[test],
+    // mixins:[test],
     data(){
         return{
-            time:[],
-            // time:["05点03分04秒", "07点11分28秒"],
+            // time:[],
+            text:{},
+            time:["00:00:00", "00:00:00"],
             // time:'05点03分04秒',
             options:{ label:'name', value:'id' },
             selectText:'',
@@ -130,7 +137,10 @@ export default {
     },
     mounted(){
         // setTimeout(()=>{
-        //     this.time = ['01点05分22秒','02点05分22秒']
+        //     this.time = ["00:00:00", "00:00:00"]
+        //     // this.text = {
+        //     //     name:'异步数据'
+        //     // }
         // },2000)
     },
     methods:{

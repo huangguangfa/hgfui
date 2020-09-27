@@ -36,6 +36,11 @@
 <fcw-button disabled type="warning">禁用按钮</fcw-button>
 <fcw-button  type="warning" size="small" :loading="true">加载中</fcw-button>
 <fcw-button  type="primary" size="small" icon="gf-tupian">照片</fcw-button>
+<fcw-button class="ml10"  type="success" size="small" plain>朴素按钮</fcw-button>
+<fcw-button class="ml10"  type="warning" size="small" plain>朴素按钮</fcw-button>
+<fcw-button class="ml10"  type="info"   size="small" plain>朴素按钮</fcw-button>
+<fcw-button class="ml10"  type="primary" size="small" plain>朴素按钮</fcw-button>
+<fcw-button class="ml10"  type="danger" size="small" plain>朴素按钮</fcw-button>
 
 ```
 :::

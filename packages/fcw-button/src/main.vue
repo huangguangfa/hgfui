@@ -73,6 +73,8 @@ export default {
         border-color: #0064cd #0064cd #003f81;
         border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
         box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+        font-size: 14px;
+        padding: 3px 10px;
     }
     .fcw-button:active{background:	#F5F5F5;}
     .fcw-button--danger{
@@ -144,10 +146,10 @@ export default {
         padding: 5px 10px;font-size: 12px;
     }
     .fcw-button--small{
-        padding: 6px 15px;
+        padding: 6px 15px;font-size: 14px;
     }
     .fcw-button--medium{
-        padding: 7px 17px;
+        padding: 7px 17px;font-size: 14px;
     }
     .fcw-success-plain{
         color: #67c23a;

@@ -1,7 +1,7 @@
 ### 基础用法
 
 <div class="demo-block">
-  <fcw-copy v-model="copyValue" icon="gf-fuzhi"><fcw-copy/>
+  <fcw-copy v-model="copyValue" icon="gf-fuzhi"></fcw-copy>
   <script>
     export default {
       data() {
@@ -17,7 +17,7 @@
 
 ```html
 
-<fcw-copy v-model="copyValue" icon="gf-fuzhi"><fcw-copy/>
+<fcw-copy v-model="copyValue" icon="gf-fuzhi"></fcw-copy>
   <script>
     export default {
       data() {

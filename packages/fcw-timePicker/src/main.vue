@@ -12,7 +12,8 @@
                 :isConstraint="isConstraint" 
                 :format="format" 
                 :type="type"
-                @on-pick-success-notice="onPickSuccessNotice"></timeSelectBox>
+                @on-pick-success-notice="onPickSuccessNotice">
+            </timeSelectBox>
         </transition>
     </div>
 </template>
@@ -87,7 +88,9 @@
             timeClear(){
                 this.$emit('input',this.type === 'time'?'':[]);
                 this.$emit('clear','');
-                this.noticeTimeSelect();
+                this.handleClose();
+                this.inputValue = null;
+                // this.noticeTimeSelect();
             },
             //派发修改
             timeSelectClick(time){
@@ -111,7 +114,7 @@
                 this.$emit('input',time);
                 this.$emit('change',time);
             },
-            //通知
+            // //通知
             noticeTimeSelect(){
                 this.$nextTick( ()=>{
                     this.broadcast('timeValue','inputFocus',true)

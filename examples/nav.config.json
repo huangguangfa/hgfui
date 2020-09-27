@@ -1,7 +1,7 @@
 {
   "介绍":[
     {
-      "desc": "fcw简介",
+      "desc": "fcw 简介",
       "name": "fcw-ui",
       "path": "/fcw-ui"
     },
@@ -13,93 +13,93 @@
   ],
   "组件": [
     {
-      "desc": "icon组件",
+      "desc": "Icon 图标",
       "name": "icon",
       "path": "/icon"
     },
     {
-      "desc": "Button组件",
+      "desc": "Button 按钮",
       "name": "button",
       "path": "/button"
     },
     {
-      "desc": "简单日历组件",
+      "desc": "Calendar 简单日历",
       "name": "calendar",
       "path": "/calendar"
     },
     {
-      "desc": "时间选择器(人性化)",
+      "desc": "TimePicker 时间选择(人性化)",
       "name": "timePicker",
       "path": "/timePicker"
     },
 
     {
-      "desc": "Input输入框",
+      "desc": "Input 输入框",
       "name": "input",
       "path": "/input"
     },
     {
-      "desc": "Copy组件",
+      "desc": "Copy 复制",
       "name": "copy",
       "path": "/copy"
     },
     {
-      "desc": "Select选择",
+      "desc": "Select 选择器",
       "name": "select",
       "path": "/select"
     },
     {
-      "desc": "MessageBox对话框",
+      "desc": "MessageBox 弹窗对话",
       "name": "messageBox",
       "path": "/messageBox"
     },
     {
-      "desc": "imageViewer图片查看器",
+      "desc": "ImageViewer 图片查看器",
       "name": "imageViewer",
       "path": "/imageViewer"
     },
     {
-      "desc": "qrcode二维码",
+      "desc": "Qrcode 二维码",
       "name": "qrcode",
       "path": "/qrcode"
     },
     {
-      "desc": "upload上传插件",
+      "desc": "Upload 上传插件",
       "name": "upload",
       "path": "/upload"
     },
     {
-      "desc": "circleview圆形进度（简易版）",
+      "desc": "Circleview 圆形进度（简易版）",
       "name": "circleview",
       "path": "/circleview"
     },
     {
-      "desc": "message消息提醒",
+      "desc": "Message 消息提醒",
       "name": "message",
       "path": "/message"
     },
     {
-      "desc": "tag标签",
+      "desc": "Tag 标签",
       "name": "tag",
       "path": "/tag"
     },
     {
-      "desc": "Pagination分页",
+      "desc": "Pagination 分页",
       "name": "Pagination",
       "path": "/Pagination"
     },
     {
-      "desc": "radio单选框",
+      "desc": "Radio 单选框",
       "name": "radio",
       "path": "/radio"
     },
     {
-      "desc": "checkbox多选框",
+      "desc": "Checkbox 多选框",
       "name": "checkbox",
       "path": "/checkbox"
     },
     {
-      "desc": "Tree树形控件",
+      "desc": "Tree 树形控件",
       "name": "tree",
       "path": "/tree"
     }

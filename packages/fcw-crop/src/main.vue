@@ -1,8 +1,7 @@
 <template>
   <div>
     <div class="cut_upload_div" :style="'width:'+width+'px;height:'+height+'px;'">
-      <canvas id="cut_upload_canvas">
-      </canvas>
+      <canvas id="cut_upload_canvas"></canvas>
     </div>
     <div class="cut_upload_btn_div">
         <span class="productBtn">
@@ -36,7 +35,7 @@ export default {
     },
     data() {
         return {
-            can: {}, //画布
+            can: {}, //画布 灵芝园
             con: {}, //画笔
             scale: 1, //缩放比例
             x: 0, //拖动x轴位置
@@ -192,29 +191,29 @@ export default {
             uploadInput.onchange = function() {
                 var file = uploadInput.files[0]; //获取上传的图片
                 if (file) {
-                var fileReader = new FileReader(); //构建读取流
-                fileReader.onload = function(e) { //读取文件完成后
-                    var imgData = e.target.result; //获取读取的base64
-                    var img = new Image(); //创建图片
-                    that.img = img;
-                    img.src = imgData;
-                    img.crossOrigin = ''; //设置跨域防止画布污染
-                    img.onload = function() {
-                    that.can.width = img.naturalWidth; //设置画布大小为图片实际大小
-                    that.can.height = img.naturalHeight;
-                    that.imgW = img.naturalWidth; //记录图片实际大小
-                    that.imgH = img.naturalHeight;
-                    that.con.drawImage(img, 0, 0, img.naturalWidth, img.naturalHeight); //渲染图片到画布上
-                    that.con.save(); //画笔存储
-                    that.scale = 1; //初始缩放为1
-                    that.nx = (that.width/2) - that.can.width / 2;
-                    that.ny = (that.height/2) - that.can.height / 2;
-                    that.can.style.transform = 'matrix(' + that.scale + ',0,0,' + that.scale + ',' + that.nx + ',' + that.ny + ')';
-                    that.x = that.nx; //初始值记录到拖动值
-                    that.y = that.ny;
+                    var fileReader = new FileReader(); //构建读取流
+                    fileReader.onload = function(e) { //读取文件完成后
+                        var imgData = e.target.result; //获取读取的base64
+                        var img = new Image(); //创建图片
+                        that.img = img;
+                        img.src = imgData;
+                        img.crossOrigin = ''; //设置跨域防止画布污染
+                        img.onload = function() {
+                            that.can.width = img.naturalWidth; //设置画布大小为图片实际大小
+                            that.can.height = img.naturalHeight;
+                            that.imgW = img.naturalWidth; //记录图片实际大小
+                            that.imgH = img.naturalHeight;
+                            that.con.drawImage(img, 0, 0, img.naturalWidth, img.naturalHeight); //渲染图片到画布上
+                            that.con.save(); //画笔存储
+                            that.scale = 1; //初始缩放为1
+                            that.nx = (that.width/2) - that.can.width / 2;
+                            that.ny = (that.height/2) - that.can.height / 2;
+                            that.can.style.transform = 'matrix(' + that.scale + ',0,0,' + that.scale + ',' + that.nx + ',' + that.ny + ')';
+                            that.x = that.nx; //初始值记录到拖动值
+                            that.y = that.ny;
+                        };
                     };
-                };
-                fileReader.readAsDataURL(file); //读取文件
+                    fileReader.readAsDataURL(file); //读取文件
                 }
             };
         });

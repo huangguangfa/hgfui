@@ -18,7 +18,7 @@
         name:'timeValue',
         props:{
             valueNumber:Number,
-            value:String
+            value:Number
         },
         data(){
             return{
@@ -29,8 +29,8 @@
             value(newVal,oldVal){
                 if(newVal !== this.currentItem){
                     this.currentItem = this.value;
-                    this.goAnchor(this.value);
-                }   
+                    this.value !== null && this.goAnchor(this.value);
+                }
             },
         },
         created(){
@@ -40,10 +40,10 @@
             })
         },
         mounted(){
-            this.value && this.goAnchor(this.value)
+            this.value != null && this.goAnchor(this.value)
         },
         methods:{
-            //过渡效果+点击事件
+            //过渡效果 + 点击事件
             goAnchor(val){
                 this.$emit('input',val);
                 this.$emit('timeSelect',val);
@@ -52,7 +52,7 @@
                 this.$refs.timeContent.scrollTop = val * 24;
             },
             getId(index){
-                let value = index >=10?index:`0${index}`;
+                let value = index >= 10 ? index : `0${index}`;
                 return 'anchor-'+value
             },
             formatTime (text) {

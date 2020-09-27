@@ -111,7 +111,7 @@ export default {
             display: flex;
             > i{
                 font-size: 22px;
-                margin-right: 10px;
+                margin-right: 6px;
                 color: #F78989;
             }
         }

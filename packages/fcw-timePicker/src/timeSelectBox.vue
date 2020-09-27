@@ -55,6 +55,9 @@
             handleTimerange(time,type){
                 if(type === 'startTime'){
                     this.startTime = time;
+                    if(!this.endTime){
+                        this.endTime = this.setDefalut();
+                    }
                 }else{
                     this.endTime = time;
                 }
@@ -64,7 +67,6 @@
                 this.submitTime(spliceTime);
                 //是否需要时间约束
                 this.isConstraint && this.timeConstraint(time,type);
-
             },
             //通知
             submitTime(time){
@@ -83,7 +85,7 @@
             //拆出动态的时-分-秒
             getFormatName(value){
                 let val = value.split('').filter( item =>{
-                    if(item !== "H" && item !== "m" && item !== "s"){ return item }
+                    if(item !== "H" && item !== "m" && item !== "s"){ return item };
                 })
                 return val;
             },
@@ -134,15 +136,21 @@
                     })
                 }
             },
+            //设置默认值
+            setDefalut(){
+                let initDate = this.getFormatName(this.format).map( item =>{
+                    return '00'+item;
+                })
+                return initDate.join('');
+            },
             //取消
             onPickClear(){
                 this.$parent.timeClear();
-                this.onPickSuccess();
             },
             //确认
             onPickSuccess(){
                 this.$parent.timeSelect = false;
-                this.$emit('on-pick-success-notice')
+                this.$emit('on-pick-success-notice');
             }
         }
     }
