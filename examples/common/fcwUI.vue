@@ -22,15 +22,19 @@
                     </div>  
                 </div>
             </div>
-            
+            <advertising></advertising>
         </div>
     </div>
 </template>
 
 <script>
 import navData from '../nav.config.json'
+import advertising from './advertising'
 export default {
     name: 'fcw-ui',
+    components:{
+        advertising
+    },
     data(){
         return {
             navList:navData,
