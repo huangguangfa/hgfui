@@ -25,8 +25,13 @@
         <!-- <Case v-model="time"></Case> -->
         <!-- <crop></crop> -->
         <!-- <fcw-crop></fcw-crop> -->
-        <fcw-calendar v-model="day"> </fcw-calendar>
+        <!-- <fcw-calendar v-model="day"> </fcw-calendar> -->
         <!-- <fcw-input></fcw-input> -->
+        <div class="laoding" v-floading="loaidng">
+            测试v-loading
+        </div>
+
+        <button @click="loaidng = !loaidng">更改loaidng</button>
     </div>
 </template>
 <script>
@@ -43,6 +48,7 @@ export default {
     // mixins:[test],
     data(){
         return{
+            loaidng:true,
             day:['2020-06-01'],
             // time:[],
             text:{},
@@ -173,4 +179,5 @@ circle {
     transition: stroke-dasharray .25s;
 }
 .demo{width: 1000px; height: 600px;display: flex;justify-items: center;align-items: center;margin: 0 auto; margin-left: 100px;}
+.laoding{width: 120px; height: 30px;background: red;cursor: pointer;color: #fff; text-align: center;line-height: 30px;}
 </style>

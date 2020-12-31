@@ -28,6 +28,7 @@ import fcwTimePicker from './fcw-timePicker/src/main.vue';
 // 导入指令
 import copy from '../directives/vcopy';
 import clickoutside from '../directives/clickoutside';  //点击组件外的全局指令
+import floading from '../directives/loading'
 
 //引入挂载原型方法
 import fcwmessage from './fcw-message-box/index';
@@ -64,7 +65,8 @@ const vuePrototype = {
 // 存储指令列表
 const directives = {
     copy,  //v-copy
-    clickoutside  //v-clickoutside
+    clickoutside,  //v-clickoutside
+    floading , //v-floaidng
 };
 // 定义install方法
 const install = function (Vue) {
