@@ -1,5 +1,4 @@
 ### 基础用法
-
 <div class="demo-block">
     <fcw-calendar   @change="change"  v-model="day"> </fcw-calendar>
     <script>
@@ -10,11 +9,7 @@
                 };
             },
             created(){
-                let date = new Date();
-                let m = (date.getMonth() + 1).length === 2?(date.getMonth() + 1): '0' + (date.getMonth() + 1);
-                let d = (date.getDate()).toString().length === 2?date.getDate(): '0' + date.getDate();
-                let day = date.getFullYear() + "-"+ m + "-" + d;
-                this.day = [ day ];
+                this.day = [ this.getCurrentDate() ];
             },
             methods:{
                 change(value){
@@ -23,6 +18,19 @@
                         message:'选择的日期：' + value[0].id,
                         showClose:false,
                     })
+                },
+                getCurrentDate(){
+                    let date = new Date();
+                    let year = date.getFullYear();
+                    let month = date.getMonth() + 1;
+                    let day = date.getDate();
+                    if (month < 10) {
+                        month = "0" + month;
+                    }
+                    if (day < 10) {
+                        day = "0" + day;
+                    }
+                    return year + "-" + month + "-" + day;
                 }
             }
         }

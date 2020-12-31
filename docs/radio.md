@@ -7,7 +7,8 @@
         export default {
             data() {
                 return {
-                    radio:'1'
+                    radio:'1',
+                    radios:'1'
                 }
             },
             methods:{
@@ -48,7 +49,7 @@
 
 ### 单选框组 结合fcw-radio-group元素和子元素fcw-radio可以实现单选组
 <div class="demo-block">
-    <fcw-radio-group v-model="radio"  @change="radioChang">
+    <fcw-radio-group v-model="radios"  @change="radioChang">
         <fcw-radio label="1">测试1</fcw-radio>
         <fcw-radio label="2">测试2</fcw-radio>
     </fcw-radio-group>
@@ -58,7 +59,7 @@
 
 ```html
 
-<fcw-radio-group v-model="radio"  @change="radioChang">
+<fcw-radio-group v-model="radios"  @change="radioChang">
     <fcw-radio label="1">测试1</fcw-radio>
     <fcw-radio label="2">测试2</fcw-radio>
 </fcw-radio-group>

@@ -18,6 +18,7 @@
       },
       methods:{
         checkboxChangAll(val){
+            console.log(val)
             if(val){
                 this.checkList = ['1','2','3']
             }else{
@@ -25,6 +26,13 @@
                 this.indeterminate = false;
             }
         },
+        checkChange(val){
+          if(val.length !== 3){
+            this.checkAll= false
+          }else{
+            this.checkAll= true
+          }
+        }
       }
     }
     </script>
@@ -85,8 +93,8 @@ export default {
 ### indeterminate 属性用以表示 checkbox 的不确定状态，一般用于实现全选的效果
 
 <div class="demo-block">
-  <fcw-checkbox label="10" v-model="checkAll" :indeterminate="indeterminate">全选</fcw-checkbox>
-  <fcw-checkbox-group v-model="checkList" >
+  <fcw-checkbox label="10" @change="checkboxChangAll"  v-model="checkAll" :indeterminate="indeterminate">全选</fcw-checkbox>
+  <fcw-checkbox-group v-model="checkList" @change="checkChange">
     <fcw-checkbox label="1">多选A</fcw-checkbox>
     <fcw-checkbox label="2">多选B</fcw-checkbox>
     <fcw-checkbox label="3">多选C</fcw-checkbox>

@@ -14,7 +14,7 @@ import fcwpage from './fcw-page/index';
 import fcwcrop from './fcw-crop/index';
 import fcwradio from './fcw-radio/radio';
 import fcwradiogroup from './fcw-radio/radiogroup';
-import fcwTimePicker from './fcw-timePicker/index'
+import fcwTimePicker from './fcw-timePicker/index';
 export {
     fcwcopy,  //复制组件
     fcwimageViewerfrom, //图片查看器

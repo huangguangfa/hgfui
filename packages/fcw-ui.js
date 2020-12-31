@@ -23,7 +23,7 @@ import fcwcheckboxgroup from './fcw-checkbox/src/main.vue';
 import fcwcheckbox from './fcw-checkbox/src/checkbox.vue';
 import fcwtable from './fcw-table/src/main.vue';
 import fcwtree from './fcw-tree/src/main.vue';
-import fcwTimePicker from './fcw-timePicker/src/main.vue'
+import fcwTimePicker from './fcw-timePicker/src/main.vue';
 
 // 导入指令
 import copy from '../directives/vcopy';
@@ -89,8 +89,6 @@ const install = function (Vue) {
 if( typeof window !== 'undefined' && window.Vue ){
     install( window.Vue );
 };
-
-
 
 //导出整体
 export default {

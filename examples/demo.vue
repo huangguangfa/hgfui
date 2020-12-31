@@ -23,14 +23,17 @@
         <!-- <test v-model="text"></test> -->
         <!-- <fcw-time-picker v-model="time" format="HH:mm:ss" type="timerange" distinguish="至" ></fcw-time-picker> -->
         <!-- <Case v-model="time"></Case> -->
-        <crop></crop>
+        <!-- <crop></crop> -->
+        <!-- <fcw-crop></fcw-crop> -->
+        <fcw-calendar v-model="day"> </fcw-calendar>
+        <!-- <fcw-input></fcw-input> -->
     </div>
 </template>
 <script>
 import Emitter from '../utils/mixins/emitter.js';
 import CollapseTransition from '../packages/transitions/collapse-transition.js'
 import test from './test'
-import  Case from './demoCom/demo.js'
+import Case from './demoCom/demo.js'
 import crop from './demoCom/crop';
 export default {
     components:{
@@ -40,6 +43,7 @@ export default {
     // mixins:[test],
     data(){
         return{
+            day:['2020-06-01'],
             // time:[],
             text:{},
             time:["00:00:00", "00:00:00"],
@@ -168,5 +172,5 @@ circle {
     -webkit-transition: stroke-dasharray .25s;
     transition: stroke-dasharray .25s;
 }
-.demo{width: 400px; height: 600px;display: flex;justify-items: center;align-items: center;margin: 0 auto; }
+.demo{width: 1000px; height: 600px;display: flex;justify-items: center;align-items: center;margin: 0 auto; margin-left: 100px;}
 </style>

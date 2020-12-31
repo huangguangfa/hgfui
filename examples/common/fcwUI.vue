@@ -5,7 +5,6 @@
                 <img class="icon" :src="require('../assets/icon.png')" alt="" title="返回首页" @click="toBlogs" />
                 <span>fcw-gf</span>
             </div>
-
             <div class="fcw-c-b">
                 <div class="fcw-left">
                     <p class="remind">开发指南</p>
@@ -61,10 +60,10 @@ export default {
 .fcw-gf{
     width: 100%; height: 100vh; background: #fff; overflow: hidden;
     .fcw-conetn{
-        width: 1140px; height: 100%; background: #fff; 
+        width: 100%; height: 100%; background: #fff; 
         margin: 0 auto; position: relative;
         .title{
-            width: 100%; height: 80px;border-bottom: 1px solid #f0f0f0;
+            width: 100%; height: 80px;border-bottom: 1px solid #f0f0f0; padding-left:50px;
             color: #0dabdd;
             display: flex; align-items: center;
             >span{
@@ -75,10 +74,10 @@ export default {
     }
 }
 .fcw-c-b{
-    width: 100%; height: 90%;display: flex; justify-content: center;
+    width: 100%; height: 90%;display: flex;
     .fcw-left{
         width: 240px; margin-right: 20px;  height: 100%; overflow: hidden; 
-        transition: background-color .3s; border-right: 1px solid #f0f0f0;
+        transition: background-color .3s; border-right: 1px solid #f0f0f0;padding-left:100px;
         .remind{
             color: #333;
             line-height: 40px;

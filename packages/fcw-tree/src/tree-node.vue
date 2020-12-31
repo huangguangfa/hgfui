@@ -20,8 +20,7 @@
                 v-model="data.check"
                 @change="handleCheckChange"
                 @click.native.stop
-                :indeterminate="data.indeterminate"
-            >
+                :indeterminate="data.indeterminate">
             </fcw-checkbox>
 
             <span class="fcw-tree-node__label" :class="!showCheckbox ?'tree_hover':''">{{ data[ label ] }}</span>
